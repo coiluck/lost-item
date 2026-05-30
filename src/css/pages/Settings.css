@@ -52,3 +52,106 @@
   font-size: 0.7rem;
   color: var(--navy-light);
 }
+
+
+/* button */
+.setting-item-value-button-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--accent);
+  letter-spacing: 0.2rem;
+}
+.setting-item-value-button {
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+.setting-item-value-button:hover {
+  background-color: var(--paper-dark);
+}
+.setting-item-value-button.active {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+/* range */
+.setting-item-value-range-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.setting-item-value-range-container input[type="range"] {
+  height: 1px;
+  background: rgba(139,111,71,0.35);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.setting-item-value-range-container input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--paper);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.setting-item-value-range-container input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: var(--accent);
+}
+
+.setting-item-value-range-text {
+  min-width: 2rem;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--navy-light);
+}
+
+/* setting-text-preview-container */
+.setting-text-preview-container {
+  position: relative;
+  border: 1px solid rgb(from var(--accent) r g b / 0.7);
+  border-left: 3px solid rgb(from var(--accent) r g b / 0.7);
+  padding: 1rem;
+  background-color: rgb(from var(--paper-dark) r g b / 0.5);
+  line-height: 2;
+}
+.setting-text-preview-label {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  transform: translateY(-50%);
+  background-color: var(--paper);
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: var(--navy-light);
+}
+.setting-text-preview-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1.2rem;
+  vertical-align: text-bottom;
+  background-color: var(--navy);
+  animation: settingCursorBlink 1.2s infinite;
+}
+@keyframes settingCursorBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -3,7 +3,7 @@ import { createMemoryRouter } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import LogoPage from "./pages/LogoPage";
 import Index from "./pages/Index";
-import Settings from "./pages/Settings";
+import SettingsPage from "./pages/SettingsPage";
 
 export const router = createMemoryRouter(
   [
@@ -12,7 +12,7 @@ export const router = createMemoryRouter(
     {
       element: <Layout />,
       children: [
-        { path: "/settings", element: <Settings />, handle: { mainTitle: "設定", subTitle: "Configuration" }, },
+        { path: "/settings", element: <SettingsPage />, handle: { mainTitle: "設定", subTitle: "Configuration" }, },
       ]
     },
   ],
