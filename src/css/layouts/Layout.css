@@ -1,0 +1,82 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--paper);
+}
+
+.layout-header {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  align-items: center;
+  position: relative;
+  padding: 1rem 1.5rem;
+  padding-left: 6rem;
+  color: var(--navy);
+  border-bottom: 1px solid var(--accent);
+}
+
+.layout-header-left {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  align-items: flex-end;
+}
+
+.layout-title {
+  font-family: serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 1rem;
+}
+
+.layout-subtitle {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent-light);
+}
+
+.layout-header-right {
+  padding: .15rem .5rem;
+  font-size: .9rem;
+  color: var(--accent-light);
+  letter-spacing: .2rem;
+  border: 1px solid var(--accent-light);
+  transition: all .2s ease-in-out;
+}
+.layout-header-right:hover {
+  background-color: var(--paper-dark);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.layout-main-content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  padding: 1.5rem;
+  padding-left: 6rem;
+}
+
+/* 左側に線を引く */
+.layout-header::before {
+  content: '';
+  position: absolute;
+  left: calc(1.5rem * 1.6 + 2rem); /* headerの高さ */
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--red);
+}
+.layout-main-content::before {
+  content: '';
+  position: absolute;
+  left: calc(1.5rem * 1.6 + 2rem);
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--red);
+}

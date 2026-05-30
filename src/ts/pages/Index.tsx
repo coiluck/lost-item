@@ -5,7 +5,7 @@ function Index() {
   const navigate = useNavigate();
 
   return (
-    <div className="page">
+    <div className="page fade-in">
       <h1>それはあなたのものですか</h1>
       <nav>
         <button onClick={() => navigate("/settings", { state: { from: "/top" } })}>設定</button>

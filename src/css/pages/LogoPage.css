@@ -44,7 +44,7 @@
   align-items: center;
 }
 .logo-text-container p {
-  color: #fff3f1;
+  color: var(--navy);
   font-size: 2.5rem;
   font-family: 'Quantum', sans-serif;
   font-weight: bold;
@@ -55,6 +55,7 @@
 }
 .logo-text-container p span {
   display: inline-block;
+  font-family: 'Quantum', sans-serif;
   opacity: 0;
 }
 

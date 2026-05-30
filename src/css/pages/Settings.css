@@ -1,0 +1,54 @@
+.setting-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.setting-section-label-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  color: var(--accent);
+  margin: 2rem 0 0.5rem ;
+}
+.setting-section-label-icon {
+  margin-left: calc((0.5rem * 1.4142 - 0.5rem) / 2);
+  width: .5rem;
+  height: .5rem;
+  background-color: var(--accent);
+  transform: rotate(45deg);
+}
+.setting-section-label-text {
+  font-size: 1rem;
+  color: var(--text-sub);
+}
+.setting-section-label-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+.setting-item-label-container {
+  display: flex;
+  flex-direction: column;
+}
+.setting-item-label-ja {
+  font-size: 1rem;
+  color: var(--navy);
+}
+.setting-item-label-en {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: var(--navy-light);
+}
