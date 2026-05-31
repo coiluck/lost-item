@@ -1,0 +1,144 @@
+.load-data-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+.load-data-header button {
+  position: relative;
+  padding: .25rem 1rem;
+  border-left: 1px solid var(--accent);
+}
+.load-data-header button:last-child {
+  border-right: 1px solid var(--accent);
+}
+.load-data-header button.active::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--red);
+  clip-path: polygon(0% 30%, 100% 30%, 50% 100%);
+  animation: loadTipBounce 1.5s infinite;
+}
+@keyframes loadTipBounce {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-4.8px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.load-data-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 700px), 1fr));
+  gap: clamp(1rem, -2rem + 8vw, 3rem);
+  margin-top: clamp(1rem, -2rem + 8vw, 3rem);
+}
+
+.load-data-content-item {
+  display: flex;
+  border-top: 1px solid var(--accent-light);
+  border-bottom: 1px solid var(--accent-light);
+  border-left: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+}
+.load-data-content-item:hover {
+  background-color: var(--paper-dark);
+  border-left: 2px solid var(--accent);
+}
+
+.load-data-content-item-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .25rem;
+  padding: 0 1rem;
+  border-right: 1px solid var(--accent-light);
+}
+.load-data-content-item-left-label {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: .8rem;
+  letter-spacing: 0.05rem;
+  color: var(--navy);
+}
+.load-data-content-item-left-number {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: 0.05rem;
+  color: var(--accent-light);
+}
+
+.load-data-content-item-right {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.load-data-content-item-image-container {
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--paper-dark);
+  border: 1px solid var(--accent-light);
+}
+
+.load-data-content-item-text-container {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.load-data-content-item-text-title {
+  width: fit-content;
+  padding: .1rem .5rem;
+  font-size: 0.8rem;
+  color: var(--white);
+  background-color: var(--red);
+}
+.load-data-content-item-text-content {
+  min-width: 0;
+  font-size: 0.9rem;
+  color: var(--navy-light);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.load-data-content-item-text-time {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--navy-light);
+}
+
+.load-data-content-item-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.load-data-content-item-button {
+  padding: .5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--navy);
+  border: 1px solid var(--accent-light);
+  transition: all 0.3s ease-in-out;
+}
+.load-data-content-item-button:hover {
+  background-color: var(--navy-mild);
+  border-color: var(--navy-mild);
+  color: var(--white);
+}
