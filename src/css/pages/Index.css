@@ -25,8 +25,8 @@
   align-items: center;
   gap: 1rem;
   position: relative;
-  padding: 1rem 0;
-  padding-right: 4rem;
+  padding: clamp(1rem, 2vw, 2rem) 0;
+  padding-right: clamp(4rem, 8vw, 8rem);
   text-align: left;
   border-top: 1px solid rgb(from var(--accent) r g b / 0.3);
   opacity: 0;

@@ -13,7 +13,7 @@ export type TransientCommand =
   | { type: 'bgmFadeOut'; duration?: number }
   | { type: 'se'; file: string }
   | { type: 'wait'; ms: number }
-  | { type: 'nextDay'; day: number; backgroundImage: string };
+  | { type: 'showNextChapter'; chapter: number; backgroundImage: string };
 
 export type ScenarioCommand = StatefulCommand | TransientCommand;
 export type CommandType = ScenarioCommand['type'];

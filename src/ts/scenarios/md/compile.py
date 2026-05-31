@@ -48,7 +48,7 @@ COMMAND_SCHEMA = {
     'bgmFadeOut': ([],                                          [('duration', _int)]),
     'se':         ([('file', _str)],                           []),
     'wait':       ([('ms', _int)],                             []),
-    'nextDay':    ([('day', _int), ('backgroundImage', _str)], []),
+    'nextChapter':    ([('chapter', _int), ('backgroundImage', _str)], []),
 }
 
 

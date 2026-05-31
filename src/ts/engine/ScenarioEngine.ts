@@ -1,5 +1,5 @@
 import type {
-  GameState, ScenarioLine, TransientCommand, ScenarioFile, BranchFrame,
+  GameState, ScenarioLine, TransientCommand, ScenarioFile, BranchFrame, Choice,
 } from './types';
 import { reduceLine } from './SceneReducer';
 import { isTransient } from './commands';
@@ -14,6 +14,10 @@ export type AdvanceResult =
 export class ScenarioEngine {
   private state: GameState;
   private readonly history = new HistoryManager<GameState>(50);
+  // 初期 state (まだ何も消費していない空 snapshot) を history に積むと
+  // goBack で「テキスト無し+背景無し」の見えない地点まで戻れてしまうため、
+  // 最初の消費/選択までは push をスキップする。
+  private hasConsumed = false;
 
   constructor(
     initial: GameState,
@@ -28,6 +32,12 @@ export class ScenarioEngine {
 
   peek(): ScenarioLine | null {
     return peekLine(this.state.progress, this.registry);
+  }
+
+  getChoices(choiceId: string): Choice[] {
+    const top = this.state.progress.branchStack[this.state.progress.branchStack.length - 1];
+    const scenarioId = top?.scenarioId ?? this.state.progress.scenarioId;
+    return this.registry[scenarioId]?.choices?.[choiceId] ?? [];
   }
 
   // 1ステップ進める
@@ -61,7 +71,7 @@ export class ScenarioEngine {
     if (!choice) {
       throw new Error(`Invalid choice: ${choiceId}[${choiceIndex}]`);
     }
-    this.history.push(structuredClone(this.state));
+    this.pushHistory();
     const frame: BranchFrame = {
       scenarioId: this.state.progress.scenarioId,
       choiceId,
@@ -84,13 +94,23 @@ export class ScenarioEngine {
   restore(saved: GameState): GameState {
     this.state = structuredClone(saved);
     this.history.clear();
+    // ロード後はロード地点に「戻れる」必要があるため、次のadvanceからpush開始。
+    this.hasConsumed = true;
     return this.getState();
   }
 
   // -------- private --------
 
-  private consumeLine(line: ScenarioLine): AdvanceResult {
+  private pushHistory(): void {
+    if (!this.hasConsumed) {
+      this.hasConsumed = true;
+      return;
+    }
     this.history.push(structuredClone(this.state));
+  }
+
+  private consumeLine(line: ScenarioLine): AdvanceResult {
+    this.pushHistory();
     this.state.snapshot = reduceLine(this.state.snapshot, line);
     const transients = (line.commands ?? []).filter(isTransient);
     this.incrementCurrent();

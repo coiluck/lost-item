@@ -5,11 +5,13 @@ import LogoPage from "./pages/LogoPage";
 import Index from "./pages/Index";
 import SettingsPage from "./pages/SettingsPage";
 import LoadDataPage from "./pages/LoadDataPage";
+import GamePage from "./pages/GamePage";
 
 export const router = createHashRouter(
   [
     { path: "/", element: <LogoPage /> },
     { path: "/top", element: <Index /> },
+    { path: "/game", element: <GamePage /> },
     {
       element: <Layout />,
       children: [

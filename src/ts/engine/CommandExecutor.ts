@@ -6,7 +6,7 @@ type Pick<K extends TransientCommand['type']> = Extract<TransientCommand, { type
 export type ExecutorContext = {
   bgMotion: (cmd: Pick<'bgMove'>) => void;
   bgShake: (cmd: Pick<'bgShake'>) => void;
-  showNextDay: (cmd: Pick<'nextDay'>) => Promise<void>;
+  showNextChapter: (cmd: Pick<'showNextChapter'>) => Promise<void>;
 };
 
 type Handlers = {
@@ -19,7 +19,7 @@ const handlers: Handlers = {
   bgmFadeOut: (cmd)      => bgm.fadeOut(cmd.duration ?? 1000),
   se:         (cmd)      => se.play(cmd.file),
   wait:       (cmd)      => new Promise<void>(r => setTimeout(r, cmd.ms)),
-  nextDay:    (cmd, ctx) => ctx.showNextDay(cmd),
+  showNextChapter:    (cmd, ctx) => ctx.showNextChapter(cmd),
 };
 
 type AnyHandler = (cmd: TransientCommand, ctx: ExecutorContext) => void | Promise<void>;

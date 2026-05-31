@@ -84,7 +84,7 @@ Alice: 続き
 @bgmFadeOut: 2000
 @se: ding
 @wait: 500
-@nextDay: 3, day3.png
+@nextChapter: 3, day3.png
 ```
 
 #### 命令一覧 (engine の型と1対1対応)
@@ -100,7 +100,7 @@ Alice: 続き
 | `@bgmFadeOut` | —                              | `duration` (default 1000) | transient |
 | `@se`         | `file`                         | —                     | transient |
 | `@wait`       | `ms`                           | —                     | transient |
-| `@nextDay`    | `day`, `backgroundImage`       | —                     | transient |
+| `@nextChapter`    | `day`, `backgroundImage`       | —                     | transient |
 
 - `@bg` の `transition` は `fade` / `crossfade` / `none`。省略時は `fade`。
 - `@bgMove` の `direction` は `leftToRight` / `rightToLeft` / `topToBottom` / `bottomToTop`。
@@ -233,6 +233,6 @@ Alice: 話しかけてみる
 @bgmFadeOut: 2000
 ナレーション (本編に戻る)。
 
-@nextDay: 2, day2.png
+@nextChapter: 2, day2.png
 次の日。
 ```

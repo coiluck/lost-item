@@ -1,5 +1,6 @@
 // ts/pages/Index.tsx
 import { useNavigate } from "react-router-dom";
+import { resetGameEngine } from "../engine/useGameEngine";
 import "../../css/pages/Index.css";
 
 interface MenuItem {
@@ -19,6 +20,11 @@ const MENU_ITEMS: MenuItem[] = [
 function Index() {
   const navigate = useNavigate();
 
+  const handleClick = (item: MenuItem) => {
+    if (item.id === "start") resetGameEngine();
+    navigate(item.path, { state: { from: "/top" } });
+  };
+
   return (
     <div className="page fade-in">
       <div className="top-container">
@@ -30,7 +36,7 @@ function Index() {
                 key={item.id}
                 className="top-menu-item"
                 style={{ "--delay": `${index * 80}ms` } as React.CSSProperties}
-                onClick={() => navigate(item.path, { state: { from: "/top" } })}
+                onClick={() => handleClick(item)}
               >
                 <span className="top-menu-item-indicator" aria-hidden="true">
                   <span className="top-menu-item-diamond" />

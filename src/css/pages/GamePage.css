@@ -1,0 +1,209 @@
+/* 背景 */
+.bg-component-container,
+.bg-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--navy-dark);
+  z-index: 0;
+}
+.bg-component-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.bg-component-image.transition-fade {
+  animation: bgFadeIn .4s ease-out;
+}
+@keyframes bgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* テキストウィンドウ */
+.game-text-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.81) 20%,
+    rgba(0, 0, 0, 0.72) 35%,
+    rgba(0, 0, 0, 0.54) 55%,
+    rgba(0, 0, 0, 0.36) 75%,
+    rgba(0, 0, 0, 0.18) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  padding: .5rem 40px 2.5rem 150px;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .game-text-container {
+    height: 20%;
+  }
+}
+
+.game-speaker-name {
+  height: calc(1.2rem * 1.5);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--white);
+  line-height: 1.5;
+  text-shadow: 2px 2px 4px var(--navy-dark);
+}
+.game-text-message::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--white);
+  margin: 10px 0;
+}
+.game-text-message {
+  font-size: 1rem;
+  color: var(--white);
+  text-shadow: 2px 2px 4px var(--navy-dark);
+}
+.game-text-message-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1.2rem;
+  margin-left: .5rem;
+  vertical-align: text-bottom;
+  background-color: var(--white);
+  animation: gameCursorBlink 1.2s infinite;
+}
+@keyframes gameCursorBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* menu */
+.game-text-container nav {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1rem, 2vw, 2rem);
+}
+.game-menu-icon {
+  width: clamp(1.2rem, 0.9rem + 0.6vw, 1.5rem);
+  height: clamp(1.2rem, 0.9rem + 0.6vw, 1.5rem);
+  background-color: var(--white);
+  cursor: pointer;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+.game-menu-icon.prev {
+  mask-image: url('/assets/images/GamePage/prev.svg');
+}
+.game-menu-icon.save {
+  mask-image: url('/assets/images/GamePage/save.svg');
+}
+.game-menu-icon.load {
+  mask-image: url('/assets/images/GamePage/load.svg');
+}
+.game-menu-icon.settings {
+  mask-image: url('/assets/images/GamePage/settings.svg');
+}
+.game-menu-icon.exit {
+  mask-image: url('/assets/images/GamePage/exit.svg');
+}
+
+/* 選択肢コンテナ */
+.game-choice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.game-choice-button {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  width: clamp(20rem, 10rem + 30vw, 36rem);
+  padding: 1rem 1.5rem;
+  background: rgb(from var(--paper) r g b / 0.92);
+  border: 1px solid rgb(from var(--accent) r g b / 0.4);
+  letter-spacing: 0.2rem;
+  color: var(--navy);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: choiceItemIn 0.4s ease forwards;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes choiceItemIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-choice-button:hover {
+  background: rgb(from var(--paper-dark) r g b / 0.95);
+  border-color: rgb(from var(--accent) r g b / 0.75);
+  border-left-color: var(--accent);
+  border-right-color: var(--accent);
+}
+
+.game-choice-button-text {
+  text-align: center;
+}
+
+.game-choice-button-decorator {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent);
+}
+
+.game-choice-button-diamond {
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  border: 1.5px solid var(--red);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+.game-choice-button:hover .game-choice-button-diamond {
+  background-color: var(--red);
+}
+
+.game-choice-button-line {
+  width: 1.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(from var(--accent) r g b / 0.6));
+  transition: all 0.3s ease;
+}
+.game-choice-button-decorator.right .game-choice-button-line {
+  background: linear-gradient(90deg, rgb(from var(--accent) r g b / 0.6), transparent);
+}
+.game-choice-button:hover .game-choice-button-line {
+  width: 2.5rem;
+}
