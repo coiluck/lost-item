@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { useSettingsStore } from "../stores/settingsStore";
 import { bgm, se } from '../audio/audio';
-import "../../css/pages/Settings.css";
+import "../../css/pages/SettingsPage.css";
 
 export default function SettingsPage() {
   const masterVolume = useSettingsStore(state => state.masterVolume);
