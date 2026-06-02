@@ -1,47 +1,91 @@
 // ts/pages/LoadDataPage.tsx
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { invoke } from '@tauri-apps/api/core';
 import SaveLoadItem from '../components/SaveLoadItem';
+import { createInitialState, useGameEngine } from '../engine/useGameEngine';
+import {
+  SLOTS_PAGE,
+  SLOTS_PER_PAGE,
+  readSlot,
+  formatSavedAt,
+  type SaveSlot,
+} from '../save/saveStorage';
 import '../../css/pages/LoadDataPage.css';
 
-interface SaveData {
-  slot: number;
-  savedAt: string;
-  rootChapter: string;
-  preview: { speaker: string; text: string };
-}
-
 export default function LoadDataPage() {
-  const SLOTS_PAGE = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const navigate = useNavigate();
+  const { restore } = useGameEngine(createInitialState());
   const [slotPageIndex, setSlotPageIndex] = useState<number>(1);
-  const [activeSlotIndex, setActiveSlotIndex] = useState<number>(0);
+  const [slots, setSlots] = useState<(SaveSlot | null)[]>([]);
 
-  const [saveData, setSaveData] = useState<SaveData[]>([]);
+  const loadPage = (page: number) =>
+    Promise.all(Array.from({ length: SLOTS_PER_PAGE }, (_, i) => readSlot(page, i + 1)));
+
   useEffect(() => {
-    // あとで
-  }, []);
+    let cancelled = false;
+    void loadPage(slotPageIndex).then((loaded) => {
+      if (!cancelled) setSlots(loaded);
+    });
+    return () => { cancelled = true; };
+  }, [slotPageIndex]);
+
+  const handleLoad = (data: SaveSlot) => {
+    restore(data.state);
+    navigate('/game');
+  };
+
+  const handleDelete = async (slot: number) => {
+    await invoke('savedata_delete', { page: slotPageIndex, slot });
+    setSlots(await loadPage(slotPageIndex));
+  };
 
   return (
     <div className="page fade-in">
       <div className="load-data-header">
-        {SLOTS_PAGE.map((slot) => (
+        {SLOTS_PAGE.map((page) => (
           <button
-            key={slot}
-            onClick={() => setSlotPageIndex(slot)}
-            className={slotPageIndex === slot ? 'active' : ''}
+            key={page}
+            onClick={() => setSlotPageIndex(page)}
+            className={slotPageIndex === page ? 'active' : ''}
           >
-            {slot}
+            {page}
           </button>
         ))}
       </div>
       <div className="load-data-content">
-        <SaveLoadItem
-          number="01"
-          chapterLabel="第一章"
-          content="公園に着くと、彼女はベンチの屋根代わりに使っているのかビニール傘を頭の上に差したまま、それでも律儀に弦を爪弾いていた。ギターケースを膝で抱えて、楽器だけは濡らさないようにしながら。"
-          time="Mar 1, 2026 12:00"
-          buttonText="ロードする"
-          onButtonClick={() => { /* ロード処理 */ }}
-        />
+        {slots.map((data, i) => {
+          const slot = i + 1;
+          const number = String(slot).padStart(2, '0');
+          if (!data) {
+            return (
+              <SaveLoadItem
+                key={slot}
+                number={number}
+                chapterLabel="NO DATA"
+                content="セーブデータがありません"
+                time="----"
+                buttonText="ロードする"
+                onButtonClick={() => {}}
+                onDeleteClick={() => handleDelete(slot)}
+              />
+            );
+          }
+          const bg = data.state.snapshot.background;
+          return (
+            <SaveLoadItem
+              key={slot}
+              number={number}
+              chapterLabel={data.state.rootChapter}
+              content={data.state.snapshot.text || '(テキストなし)'}
+              time={formatSavedAt(data.savedAt)}
+              imageSrc={bg ? `/assets/images/background/${bg.file}` : undefined}
+              buttonText="ロードする"
+              onButtonClick={() => handleLoad(data)}
+              onDeleteClick={() => handleDelete(slot)}
+            />
+          );
+        })}
       </div>
     </div>
   );

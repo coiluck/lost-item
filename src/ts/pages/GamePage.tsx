@@ -124,24 +124,29 @@ export default function GamePage() {
     }
   };
 
-  const stop = (e: React.MouseEvent) => e.stopPropagation();
-
   const handlePrev = (e: React.MouseEvent) => {
-    stop(e);
+    e.stopPropagation();
     instantNextRef.current = true;
     if (!goBack()) instantNextRef.current = false;
   };
   const handleSettings = (e: React.MouseEvent) => {
-    stop(e);
+    e.stopPropagation();
     navigate('/settings', { state: { from: 'game' } });
   };
   const handleSave = (e: React.MouseEvent) => {
-    stop(e);
+    e.stopPropagation();
     navigate('/save', { state: { from: 'game' } });
   };
-
+  const handleLoad = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigate('/load', { state: { from: 'game' } });
+  };
+  const handleExit = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigate('/top');
+  };
   const handleChoice = async (index: number, e: React.MouseEvent) => {
-    stop(e);
+    e.stopPropagation();
     if (!pendingChoice || advancingRef.current) return;
     advancingRef.current = true;
     try {
@@ -172,9 +177,9 @@ export default function GamePage() {
         <nav>
           <a className="game-menu-icon prev" title="前へ" onClick={handlePrev} />
           <a className="game-menu-icon save" title="セーブ" onClick={handleSave} />
-          <a className="game-menu-icon load" title="ロード" onClick={stop} />
+          <a className="game-menu-icon load" title="ロード" onClick={handleLoad} />
           <a className="game-menu-icon settings" title="設定" onClick={handleSettings} />
-          <a className="game-menu-icon exit" title="終了" onClick={stop} />
+          <a className="game-menu-icon exit" title="終了" onClick={handleExit} />
         </nav>
       </div>
 

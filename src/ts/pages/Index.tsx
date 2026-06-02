@@ -55,7 +55,7 @@ function Index() {
       </div>
 
       <footer className="top-footer">
-        <span className="top-footer-copy">© 2025 KOKONE Project</span>
+        <span className="top-footer-copy">© 2026 KOKONE Project</span>
         <span className="top-footer-ver">ver 1.0.0</span>
       </footer>
     </div>

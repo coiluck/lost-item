@@ -100,6 +100,8 @@ export function useGameEngine(initial: GameState) {
 
   const restore = (saved: GameState) => {
     engine.restore(saved);
+    // ロード後に /game で再度 advance されないよう開始済みにする。
+    started = true;
     setPendingChoice(null);
     syncFromState();
   };
