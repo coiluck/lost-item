@@ -135,6 +135,10 @@ export default function GamePage() {
     stop(e);
     navigate('/settings', { state: { from: 'game' } });
   };
+  const handleSave = (e: React.MouseEvent) => {
+    stop(e);
+    navigate('/save', { state: { from: 'game' } });
+  };
 
   const handleChoice = async (index: number, e: React.MouseEvent) => {
     stop(e);
@@ -167,7 +171,7 @@ export default function GamePage() {
 
         <nav>
           <a className="game-menu-icon prev" title="前へ" onClick={handlePrev} />
-          <a className="game-menu-icon save" title="セーブ" onClick={stop} />
+          <a className="game-menu-icon save" title="セーブ" onClick={handleSave} />
           <a className="game-menu-icon load" title="ロード" onClick={stop} />
           <a className="game-menu-icon settings" title="設定" onClick={handleSettings} />
           <a className="game-menu-icon exit" title="終了" onClick={stop} />

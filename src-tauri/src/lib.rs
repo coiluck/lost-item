@@ -1,3 +1,4 @@
+mod savedata;
 mod settings;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -8,6 +9,9 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             settings::settings_get,
             settings::settings_set,
+            savedata::savedata_get,
+            savedata::savedata_set,
+            savedata::savedata_delete,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

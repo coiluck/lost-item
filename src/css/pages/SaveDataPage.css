@@ -1,0 +1,45 @@
+.save-data-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+.save-data-header button {
+  position: relative;
+  padding: .25rem 1rem;
+  border-left: 1px solid var(--accent);
+}
+.save-data-header button:last-child {
+  border-right: 1px solid var(--accent);
+}
+.save-data-header button.active::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--red);
+  clip-path: polygon(0% 30%, 100% 30%, 50% 100%);
+  animation: saveTipBounce 1.5s infinite;
+}
+@keyframes saveTipBounce {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-4.8px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.save-data-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 700px), 1fr));
+  gap: clamp(1rem, -2rem + 8vw, 3rem);
+  margin-top: clamp(1rem, -2rem + 8vw, 3rem);
+}
