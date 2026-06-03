@@ -11,7 +11,7 @@ let sharedEngine: ScenarioEngine | null = null;
 let started = false;
 let lastBgm: string | null = null;
 
-export const createInitialState = (scenarioId = 'test'): GameState => ({
+export const createInitialState = (scenarioId = '1'): GameState => ({
   progress: { scenarioId, lineIndex: 0, branchStack: [] },
   snapshot: {
     background: null,

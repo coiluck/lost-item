@@ -13,8 +13,8 @@ class BGM {
   }
 
   async play(fileName: string) {
-    const nextIntro = new Audio(`./src/assets/audio/bgm/${fileName}_intro.mp3`);
-    const nextLoop = new Audio(`./src/assets/audio/bgm/${fileName}_loop.mp3`);
+    const nextIntro = new Audio(`/assets/audio/bgm/${fileName}_intro.mp3`);
+    const nextLoop = new Audio(`/assets/audio/bgm/${fileName}_loop.mp3`);
     nextIntro.volume = this.volume;
     nextLoop.volume = this.volume;
     nextLoop.loop = true;
@@ -99,7 +99,7 @@ class SE {
     const wavList: string[] = ['button1', 'button2', 'button3', 'button_close', 'day', 'phone_call', 'disable'];
     const extension = wavList.includes(fileName) ? '.wav' : '.mp3';
 
-    this.audio = new Audio(`./src/assets/audio/se/${fileName}${extension}`);
+    this.audio = new Audio(`/assets/audio/se/${fileName}${extension}`);
     this.audio.volume = this.volume;
     this.audio.play().catch((e) => console.warn('再生に失敗しました:', e));
   }
