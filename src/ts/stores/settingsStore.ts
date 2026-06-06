@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { invoke } from '@tauri-apps/api/core';
+import { applyScreenMode } from '../utils/screenMode';
 
 type ScreenMode = 'fullscreen' | 'window';
 
@@ -82,8 +83,9 @@ export const useSettingsStore = create<SettingsState>((set) => ({
 
   // others
   screenMode: 'window',
-  setScreenMode: (mode: ScreenMode) => {
+  setScreenMode: async (mode: ScreenMode) => {
     set({ screenMode: mode });
+    await applyScreenMode(mode); // 画面モードを適用
     setSetting('screenMode', mode);
   },
   loadOthersSettings: async () => {

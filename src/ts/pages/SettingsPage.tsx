@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { useSettingsStore } from "../stores/settingsStore";
 import { bgm, se } from '../audio/audio';
+import { setMasterGain } from '../audio/audioContext';
 import "../../css/pages/SettingsPage.css";
 
 export default function SettingsPage() {
@@ -23,18 +24,17 @@ export default function SettingsPage() {
 
   const handleMasterVolumeChange = (volume: number) => {
     setMasterVolume(volume);
-    bgm.setVolume(volume * bgmVolume);
-    se.setVolume(volume * seVolume);
+    setMasterGain(volume);
   };
 
   const handleBgmVolumeChange = (volume: number) => {
     setBgmVolume(volume);
-    bgm.setVolume(volume * masterVolume);
+    bgm.setVolume(volume);
   };
 
   const handleSeVolumeChange = (volume: number) => {
     setSeVolume(volume);
-    se.setVolume(volume * masterVolume);
+    se.setVolume(volume);
   };
 
   const handleTextSpeedChange = async (speed: number) => {
@@ -59,6 +59,10 @@ export default function SettingsPage() {
 
   const handleTextSizeChange = (size: number) => {
     setTextSize(size);
+  };
+
+  const handleScreenModeChange = (mode: 'fullscreen' | 'window') => {
+    setScreenMode(mode);
   };
 
   return (
@@ -173,8 +177,8 @@ export default function SettingsPage() {
             <span className="setting-item-label-en">Screen Mode</span>
           </div>
           <div className="setting-item-value-button-container">
-            <button className={`setting-item-value-button ${screenMode === 'fullscreen' ? 'active' : ''}`} onClick={() => setScreenMode('fullscreen')}>全画面</button>
-            <button className={`setting-item-value-button ${screenMode === 'window' ? 'active' : ''}`} onClick={() => setScreenMode('window')}>ウィンドウ</button>
+            <button className={`setting-item-value-button ${screenMode === 'fullscreen' ? 'active' : ''}`} onClick={() => handleScreenModeChange('fullscreen')}>全画面</button>
+            <button className={`setting-item-value-button ${screenMode === 'window' ? 'active' : ''}`} onClick={() => handleScreenModeChange('window')}>ウィンドウ</button>
           </div>
         </div>
       </section>

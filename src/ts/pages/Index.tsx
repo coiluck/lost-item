@@ -1,6 +1,8 @@
 // ts/pages/Index.tsx
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { resetGameEngine } from "../engine/useGameEngine";
+import { bgm } from "../audio/audio";
 import "../../css/pages/Index.css";
 
 interface MenuItem {
@@ -12,9 +14,9 @@ interface MenuItem {
 
 const MENU_ITEMS: MenuItem[] = [
   { id: "start", labelJa: "はじめから", labelEn: "New Game", path: "/game" },
-  { id: "continue", labelJa: "つづきから", labelEn: "Continue", path: "/load" },
-  { id: "gallery", labelJa: "ギャラリー", labelEn: "Gallery", path: "/gallery" },
-  { id: "settings", labelJa: "設定", labelEn: "Settings", path: "/settings" },
+  { id: "continue", labelJa: "つづきから", labelEn: "Load Data", path: "/load" },
+  { id: "gallery", labelJa: "コレクション", labelEn: "Collection", path: "/gallery" },
+  { id: "settings", labelJa: "設定", labelEn: "Configuration", path: "/settings" },
 ];
 
 function Index() {
@@ -24,6 +26,10 @@ function Index() {
     if (item.id === "start") resetGameEngine();
     navigate(item.path, { state: { from: "/top" } });
   };
+
+  useEffect(() => {
+    bgm.fadeOut(500);
+  }, []);
 
   return (
     <div className="page fade-in">
