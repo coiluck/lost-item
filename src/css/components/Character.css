@@ -1,0 +1,67 @@
+/* 立ち絵レイヤー */
+.character-sprite-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.character-sprite-image {
+  height: 90%;
+  max-width: 45%;
+  object-fit: contain;
+  object-position: bottom;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* bounce 指定付きで登場したときはフェードイン＋バウンド */
+.character-sprite-image.appear-bounce {
+  animation: spriteAppear 2s ease-in-out both;
+}
+
+/* ポーズ入れ替え時のバウンド（話している雰囲気） */
+.character-sprite-image.bounce {
+  animation: spriteBounce 1.2s ease-in-out;
+}
+
+@keyframes spriteAppear {
+  0%   { transform: translateY(0);     opacity: 0; }
+  10%  { transform: translateY(-15px); opacity: 0.5; }
+  20%  { transform: translateY(0);     opacity: 1; }
+  30%  { transform: translateY(-8px);  opacity: 1; }
+  40%  { transform: translateY(0);     opacity: 1; }
+  100% { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes spriteBounce {
+  0%   { transform: translateY(0); }
+  15%  { transform: translateY(-15px); }
+  30%  { transform: translateY(0); }
+  45%  { transform: translateY(-8px); }
+  60%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+/* 顔レイヤー */
+.character-face-layer {
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  width: calc(150px - 2rem);
+  height: 30%;
+  z-index: 2;
+}
+
+.character-face-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  user-select: none;
+  -webkit-user-drag: none;
+}

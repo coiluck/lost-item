@@ -76,7 +76,7 @@ const scenario: ScenarioFile = {
         {
           type: 'char',
           id: 'haru',
-          pose: 'smile',
+          pose: 'happy',
         },
       ],
     },
@@ -86,6 +86,13 @@ const scenario: ScenarioFile = {
     {
       text: 'ねえねえ、藤波さんって呼んでいい？ 私、橘陽春っていうんだけど',
       speaker: '陽春',
+      commands: [
+        {
+          type: 'char',
+          id: 'haru',
+          pose: 'normal_open',
+        },
+      ],
     },
     {
       text: 'うん、もちろん',
@@ -94,6 +101,14 @@ const scenario: ScenarioFile = {
     {
       text: 'どこから来たの？ 遠い？',
       speaker: '陽春',
+      commands: [
+        {
+          type: 'char',
+          id: 'haru',
+          pose: 'normal_open',
+          bounce: true,
+        },
+      ],
     },
     {
       text: '一つ隣の県。お父さんの仕事で',
@@ -102,6 +117,13 @@ const scenario: ScenarioFile = {
     {
       text: 'へえー！ じゃあ方言とかある？',
       speaker: '陽春',
+      commands: [
+        {
+          type: 'char',
+          id: 'haru',
+          pose: 'happy',
+        },
+      ],
     },
     {
       text: 'あんまり出ないほうだと思う、たぶん',
@@ -110,6 +132,14 @@ const scenario: ScenarioFile = {
     {
       text: 'ちょっと残念',
       speaker: '陽春',
+      commands: [
+        {
+          type: 'char',
+          id: 'haru',
+          pose: 'perori',
+          bounce: true,
+        },
+      ],
     },
     {
       text: 'くすっと笑って、陽春はまた何かを訊いてくる。',
@@ -124,6 +154,13 @@ const scenario: ScenarioFile = {
     {
       text: '陽春、今日バイトじゃないの',
       speaker: '？？？',
+      commands: [
+        {
+          type: 'char',
+          id: 'kasumi',
+          pose: 'normal',
+        },
+      ],
     },
     {
       text: '後ろの席の子が呆れたように口を挟んだ。',
@@ -135,7 +172,7 @@ const scenario: ScenarioFile = {
         {
           type: 'char',
           id: 'haru',
-          pose: 'panic',
+          pose: 'surprised',
         },
       ],
     },
@@ -153,6 +190,14 @@ const scenario: ScenarioFile = {
     {
       text: '全然大丈夫じゃない！ やばい何時からだっけ！',
       speaker: '陽春',
+      commands: [
+        {
+          type: 'char',
+          id: 'haru',
+          pose: 'trouble',
+          bounce: true,
+        },
+      ],
     },
     {
       text: 'そう言って陽春は鞄をひっつかんで、廊下のほうへ飛び出していった。',
@@ -163,6 +208,14 @@ const scenario: ScenarioFile = {
     {
       text: 'また明日ね瑞穂ちゃん！ ごめんね！',
       speaker: '陽春',
+      commands: [
+        {
+          type: 'char',
+          id: 'haru',
+          pose: 'surprised',
+          bounce: true,
+        },
+      ],
     },
     {
       text: '名前、もう呼び捨てだ。',
@@ -182,6 +235,12 @@ const scenario: ScenarioFile = {
     },
     {
       text: '残されたクラスメイトたちも、それぞれ荷物をまとめて出て行った。',
+      commands: [
+        {
+          type: 'charDelete',
+          id: 'kasumi',
+        },
+      ],
     },
     {
       text: '（一人になっちゃった）',

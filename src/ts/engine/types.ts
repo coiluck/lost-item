@@ -3,7 +3,7 @@ export type BgDirection = 'leftToRight' | 'rightToLeft' | 'topToBottom' | 'botto
 
 export type StatefulCommand =
   | { type: 'bg'; file: string; transition?: 'fade' | 'crossfade' | 'none' }
-  | { type: 'char'; id: string; pose: string; withFace?: boolean }
+  | { type: 'char'; id: string; pose: string; bounce?: boolean }
   | { type: 'charDelete'; id?: string }
   | { type: 'bgm'; file: string | null };
 

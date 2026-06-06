@@ -42,6 +42,7 @@ export function useGameEngine(initial: GameState) {
 
   const setSnapshot = useGameStore((s) => s.setSnapshot);
   const fireMotion = useGameStore((s) => s.fireMotion);
+  const fireBounce = useGameStore((s) => s.fireBounce);
   const setPendingChoice = useGameStore((s) => s.setPendingChoice);
 
   const syncBgm = (next: string | null) => {
@@ -61,6 +62,10 @@ export function useGameEngine(initial: GameState) {
     const result = engine.advance();
     if (result.kind === 'line') {
       syncFromState();
+      // @char に bounce フラグが付いた立ち絵をはねさせる（話している演出）。
+      for (const cmd of result.line.commands ?? []) {
+        if (cmd.type === 'char' && cmd.bounce) fireBounce(cmd.id);
+      }
       await executeTransients(result.transients, {
         bgMotion: (cmd) => fireMotion({ direction: cmd.direction, duration: cmd.duration }),
         bgShake: (_cmd) => { /* TODO */ },

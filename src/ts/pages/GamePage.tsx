@@ -4,6 +4,7 @@ import { createInitialState, useGameEngine } from '../engine/useGameEngine';
 import { useGameStore } from '../stores/gameStore';
 import { useSettingsStore } from '../stores/settingsStore';
 import { Background } from '../components/Background';
+import { CharacterSprite, CharacterFace } from '../components/Character';
 import '../../css/pages/GamePage.css';
 
 export default function GamePage() {
@@ -164,6 +165,8 @@ export default function GamePage() {
     <div className="page fade-in" onClick={handleClick} onWheel={handleWheel}>
 
       <Background bg={bg} motion={motion} />
+      <CharacterSprite />
+      <CharacterFace />
 
       <div className="game-text-container">
         <div className="game-speaker-name" style={{ visibility: snapshot.speaker ? 'visible' : 'hidden' }}>

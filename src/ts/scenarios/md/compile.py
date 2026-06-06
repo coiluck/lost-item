@@ -40,7 +40,6 @@ def _str_or_null(s: str):
 # 各 arg は (key, parser) のタプル。位置引数 (カンマ区切り) で受ける。
 COMMAND_SCHEMA = {
     'bg':         ([('file', _str)],                           [('transition', _str)]),
-    'char':       ([('id', _str), ('pose', _str)],             [('withFace', _bool)]),
     'charDelete': ([],                                          [('id', _str)]),
     'bgm':        ([('file', _str_or_null)],                   []),
     'bgMove':     ([('direction', _str), ('duration', _int)],  []),
@@ -52,12 +51,33 @@ COMMAND_SCHEMA = {
 }
 
 
+# @char の id, pose に続く任意の旗。書いた旗だけ True になる。
+CHAR_FLAGS = {'face': 'withFace', 'withface': 'withFace', 'bounce': 'bounce'}
+
+
+def parse_char(args_raw: str) -> dict:
+    parts = [p.strip() for p in args_raw.split(',')] if args_raw else []
+    if len(parts) < 2 or not parts[0] or not parts[1]:
+        raise ValueError(f"@char は id, pose が必要 (got {args_raw!r})")
+    out: dict = {'type': 'char', 'id': parts[0], 'pose': parts[1]}
+    for flag in parts[2:]:
+        if not flag:
+            continue
+        key = CHAR_FLAGS.get(flag.lower())
+        if key is None:
+            raise ValueError(f"@char の不明な旗: {flag!r} (face / bounce)")
+        out[key] = True
+    return out
+
+
 def parse_command(raw: str) -> dict:
     m = re.match(r'^@(\w+)\s*(?::\s*(.*))?$', raw.strip())
     if not m:
         raise ValueError(f"不正なコマンド構文: {raw!r}")
     name = m.group(1)
     args_raw = (m.group(2) or '').strip()
+    if name == 'char':
+        return parse_char(args_raw)
     schema = COMMAND_SCHEMA.get(name)
     if schema is None:
         raise ValueError(f"未知のコマンド: @{name}")

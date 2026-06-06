@@ -76,6 +76,8 @@ Alice: 続き
 @bgm: -                  # bgm 停止 (null)
 @char: alice, smile
 @char: alice, smile, face
+@char: alice, smile, bounce        # 表示中の立ち絵をはねさせる (話している演出)
+@char: alice, smile, face, bounce
 @charDelete              # 全キャラ消去
 @charDelete: alice
 @bgMove: leftToRight, 1000
@@ -93,7 +95,7 @@ Alice: 続き
 | ------------- | ------------------------------ | --------------------- | --------- |
 | `@bg`         | `file`                         | `transition`          | stateful  |
 | `@bgm`        | `file` (`-` で null)           | —                     | stateful  |
-| `@char`       | `id`, `pose`                   | `withFace` (`face`)   | stateful  |
+| `@char`       | `id`, `pose`                   | `face`, `bounce` (旗)  | stateful  |
 | `@charDelete` | —                              | `id`                  | stateful  |
 | `@bgMove`     | `direction`, `duration` (ms)   | —                     | transient |
 | `@bgShake`    | `duration`, `intensity`        | —                     | transient |
@@ -104,7 +106,8 @@ Alice: 続き
 
 - `@bg` の `transition` は `fade` / `crossfade` / `none`。省略時は `fade`。
 - `@bgMove` の `direction` は `leftToRight` / `rightToLeft` / `topToBottom` / `bottomToTop`。
-- `@char` の `withFace` は `face` (または `true` / `1` / `yes`) を渡すと `true`。省略時は `false`。
+- `@char` の `id`, `pose` に続けて旗 `face` / `bounce` を任意個・順不同で渡せる。
+  - `bounce`: その行で立ち絵をはねさせ、話している雰囲気を出す。ポーズ変更の有無は問わない。
 
 ### コマンドだけの段落
 
