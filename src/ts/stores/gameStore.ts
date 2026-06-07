@@ -23,6 +23,7 @@ const INITIAL_SNAPSHOT: SceneSnapshot = {
   bgm: null,
   text: '',
   speaker: '',
+  faceId: null,
 };
 
 type GameStore = {

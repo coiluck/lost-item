@@ -19,6 +19,7 @@ export const createInitialState = (scenarioId = '1'): GameState => ({
     bgm: null,
     text: '',
     speaker: '',
+    faceId: null,
   },
   rootChapter: chapterLabels[scenarioId] ?? scenarioId,
   version: 1,

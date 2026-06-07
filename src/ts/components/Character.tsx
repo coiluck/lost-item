@@ -56,19 +56,19 @@ export function CharacterSprite() {
 
 export function CharacterFace() {
   const characters = useGameStore((s) => s.snapshot.characters);
+  const faceId = useGameStore((s) => s.snapshot.faceId);
 
-  if (characters.length === 0) return <div className="character-layer" />;
+  // 現在の行の char で指定されたキャラ
+  const c = faceId ? characters.find((x) => x.id === faceId) : null;
+  if (!c) return null;
 
   return (
-    <div className="character-face-layer">
-      {characters.map((c) => (
-        <img
-          key={c.id}
-          className="character-face-image"
-          src={`/assets/images/character/face/${c.id}/${c.pose}.png`}
-          alt={c.id}
-        />
-      ))}
+    <div className="character-face-layer fade-in">
+      <img
+        className="character-face-image"
+        src={`/assets/images/character/face/${c.id}/${c.pose}.png`}
+        alt={c.id}
+      />
     </div>
   );
 }

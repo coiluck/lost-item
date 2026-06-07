@@ -13,12 +13,12 @@ export const statefulReducers: Reducers = {
   }),
 
   char: (s, cmd) => {
-    const entry = { id: cmd.id, pose: cmd.pose, withFace: cmd.withFace ?? false };
+    const entry = { id: cmd.id, pose: cmd.pose };
     const i = s.characters.findIndex(c => c.id === cmd.id);
-    if (i < 0) return { ...s, characters: [...s.characters, entry] };
+    if (i < 0) return { ...s, characters: [...s.characters, entry], faceId: cmd.id };
     const next = s.characters.slice();
     next[i] = entry;
-    return { ...s, characters: next };
+    return { ...s, characters: next, faceId: cmd.id };
   },
 
   charDelete: (s, cmd) => ({
@@ -41,6 +41,7 @@ export function reduceLine(snapshot: SceneSnapshot, line: ScenarioLine): SceneSn
     ...snapshot,
     text: line.text,
     speaker: line.speaker ?? '',
+    faceId: null,
   };
   for (const cmd of line.commands ?? []) {
     if (!isStatefulType(cmd.type)) continue;

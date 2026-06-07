@@ -43,10 +43,12 @@ export type ScenarioFile = {
 // シーン状態
 export type SceneSnapshot = {
   background: { file: string; transition: 'fade' | 'crossfade' | 'none' } | null;
-  characters: ReadonlyArray<{ id: string; pose: string; withFace: boolean }>;
+  characters: ReadonlyArray<{ id: string; pose: string }>;
   bgm: { file: string } | null;
   text: string;
   speaker: string;
+  // 現在の行の char 命令で指定されたキャラ id。char 命令が無い行では null
+  faceId: string | null;
 };
 
 // 進行位置
