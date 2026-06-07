@@ -22,6 +22,7 @@ export class ScenarioEngine {
   constructor(
     initial: GameState,
     private readonly registry: Record<string, ScenarioFile>,
+    private readonly chapterLabels: Record<string, string> = {},
   ) {
     this.state = structuredClone(initial);
   }
@@ -124,5 +125,6 @@ export class ScenarioEngine {
   private jumpToScenario(id: string): void {
     if (!this.registry[id]) throw new Error(`Unknown scenario: ${id}`);
     this.state.progress = { scenarioId: id, lineIndex: 0, branchStack: [] };
+    this.state.rootChapter = this.chapterLabels[id] ?? id;
   }
 }

@@ -142,7 +142,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1rem;
-  width: clamp(20rem, 10rem + 30vw, 36rem);
+  width: clamp(35rem, 25rem + 20vw, 45rem);
   padding: .75rem 1.5rem;
   background: rgb(from var(--paper) r g b / 0.92);
   border: 1px solid rgb(from var(--accent) r g b / 0.4);

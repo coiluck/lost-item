@@ -1,6 +1,6 @@
 import { ScenarioEngine, type AdvanceResult } from './ScenarioEngine';
 import { executeTransients } from './CommandExecutor';
-import { scenarioRegistry } from '../scenarios';
+import { scenarioRegistry, chapterLabels } from '../scenarios';
 import { useGameStore } from '../stores/gameStore';
 import { bgm } from '../audio/audio';
 import type { Choice, GameState } from './types';
@@ -20,12 +20,12 @@ export const createInitialState = (scenarioId = '1'): GameState => ({
     text: '',
     speaker: '',
   },
-  rootChapter: scenarioId,
+  rootChapter: chapterLabels[scenarioId] ?? scenarioId,
   version: 1,
 });
 
 export function resetGameEngine(initial: GameState = createInitialState()): void {
-  sharedEngine = new ScenarioEngine(initial, scenarioRegistry);
+  sharedEngine = new ScenarioEngine(initial, scenarioRegistry, chapterLabels);
   started = false;
   if (lastBgm) void bgm.fadeOut();
   lastBgm = initial.snapshot.bgm?.file ?? null;
@@ -35,7 +35,7 @@ export function resetGameEngine(initial: GameState = createInitialState()): void
 
 export function useGameEngine(initial: GameState) {
   if (!sharedEngine) {
-    sharedEngine = new ScenarioEngine(initial, scenarioRegistry);
+    sharedEngine = new ScenarioEngine(initial, scenarioRegistry, chapterLabels);
     lastBgm = initial.snapshot.bgm?.file ?? null;
   }
   const engine = sharedEngine;
