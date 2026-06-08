@@ -101,8 +101,9 @@ def parse_command(raw: str) -> dict:
 
 FRONTMATTER_RE = re.compile(r'\A---\s*\n(.*?)\n---\s*(?:\n|$)(.*)\Z', re.DOTALL)
 SPEAKER_RE = re.compile(r'^([^\s:][^:]*?):\s+(.*)$')
-# `- ボタン文字列 -> nextScenarioId` の解析。next は任意、ASCII識別子のみ許可。
-BRANCH_RE = re.compile(r'^(.+?)(?:\s+->\s+([A-Za-z_]\w*))?\s*$')
+# `- ボタン文字列 -> nextScenarioId` の解析。next は任意。registry のキーに使う
+# ASCII 識別子 (英数字と `_`)。数字のみのID (例: `6`) も可。日本語等は不可。
+BRANCH_RE = re.compile(r'^(.+?)(?:\s+->\s+([A-Za-z0-9_]+))?\s*$')
 BRANCH_INDENT = 4
 
 

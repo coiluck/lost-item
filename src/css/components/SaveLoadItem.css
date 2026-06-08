@@ -55,9 +55,11 @@
   overflow: hidden;
 }
 .saveload-component-item-image {
+  position: relative;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 2;
 }
 .saveload-component-item-image-container::before {
   content: 'No Image';
