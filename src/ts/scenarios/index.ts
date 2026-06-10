@@ -7,6 +7,9 @@ import scenario5 from './5';
 import scenario6 from './6';
 import scenario7 from './7';
 import scenario8 from './8';
+import scenarioEndHokanbu from './end-hokanbu';
+import scenarioEndKyuudou from './end-kyuudou';
+import scenarioEndMaverick from './end-maverick';
 
 export const scenarioRegistry: Record<string, ScenarioFile> = {
   '1': scenario1,
@@ -17,6 +20,9 @@ export const scenarioRegistry: Record<string, ScenarioFile> = {
   '6': scenario6,
   '7': scenario7,
   '8': scenario8,
+  'end-hokanbu': scenarioEndHokanbu,
+  'end-kyuudou': scenarioEndKyuudou,
+  'end-maverick': scenarioEndMaverick,
 };
 
 // シナリオIDからSaveLoadItemで使うラベル名にする
