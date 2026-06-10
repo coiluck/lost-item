@@ -2,7 +2,7 @@ import { writeTextFile, readTextFile } from '@tauri-apps/plugin-fs';
 import type { GameState } from './types';
 
 const SAVE_DIR = 'save';
-const CURRENT_VERSION = 1;
+const CURRENT_VERSION = 2;
 
 const path = (slot: number) => `${SAVE_DIR}/slot${slot}.json`;
 
@@ -36,6 +36,9 @@ export async function loadGame(slot: number): Promise<GameState> {
 
 function migrate(data: SaveData): GameState {
   if (data.version === CURRENT_VERSION) return data.state;
-  // 将来のバージョンアップ用
+  // v1: points フィールドが無い。空で補ってv2に上げる。
+  if (data.version === 1) {
+    return { ...data.state, points: {}, version: 2 };
+  }
   throw new Error(`Unsupported save version: ${data.version}`);
 }

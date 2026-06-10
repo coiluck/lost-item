@@ -1,5 +1,5 @@
 import type {
-  GameState, ScenarioLine, TransientCommand, ScenarioFile, BranchFrame, Choice,
+  GameState, ScenarioLine, TransientCommand, ScenarioFile, BranchFrame, Choice, Condition,
 } from './types';
 import { reduceLine } from './SceneReducer';
 import { isTransient } from './commands';
@@ -35,10 +35,12 @@ export class ScenarioEngine {
     return peekLine(this.state.progress, this.registry);
   }
 
+  // showIf を満たす選択肢だけ返す (UIに見せる一覧)。
   getChoices(choiceId: string): Choice[] {
     const top = this.state.progress.branchStack[this.state.progress.branchStack.length - 1];
     const scenarioId = top?.scenarioId ?? this.state.progress.scenarioId;
-    return this.registry[scenarioId]?.choices?.[choiceId] ?? [];
+    const all = this.registry[scenarioId]?.choices?.[choiceId] ?? [];
+    return all.filter((c) => this.isVisible(c));
   }
 
   // 1ステップ進める
@@ -65,14 +67,23 @@ export class ScenarioEngine {
     }
   }
 
-  // 選択肢を選ぶ
-  selectChoice(choiceId: string, choiceIndex: number): void {
+  // 選択肢を選ぶ。visibleIndex は getChoices が返した (絞り込み後の) 一覧の位置。
+  selectChoice(choiceId: string, visibleIndex: number): void {
     const scenario = this.registry[this.state.progress.scenarioId];
-    const choice = scenario?.choices?.[choiceId]?.[choiceIndex];
+    const all = scenario?.choices?.[choiceId] ?? [];
+    // 絞り込み後の位置 → branch 本体を持つ元配列の位置へ変換。
+    const choiceIndex = all.reduce<number[]>(
+      (acc, c, i) => (this.isVisible(c) ? [...acc, i] : acc),
+      [],
+    )[visibleIndex];
+    const choice = choiceIndex === undefined ? undefined : all[choiceIndex];
     if (!choice) {
-      throw new Error(`Invalid choice: ${choiceId}[${choiceIndex}]`);
+      throw new Error(`Invalid choice: ${choiceId}[${visibleIndex}]`);
     }
     this.pushHistory();
+    for (const [key, delta] of Object.entries(choice.points ?? {})) {
+      this.state.points[key] = (this.state.points[key] ?? 0) + delta;
+    }
     const frame: BranchFrame = {
       scenarioId: this.state.progress.scenarioId,
       choiceId,
@@ -101,6 +112,22 @@ export class ScenarioEngine {
   }
 
   // -------- private --------
+
+  private isVisible(choice: Choice): boolean {
+    return (choice.showIf ?? []).every((c) => this.evalCondition(c));
+  }
+
+  private evalCondition(c: Condition): boolean {
+    const v = this.state.points[c.key] ?? 0;
+    switch (c.op) {
+      case '>=': return v >= c.value;
+      case '<=': return v <= c.value;
+      case '>': return v > c.value;
+      case '<': return v < c.value;
+      case '==': return v === c.value;
+      case '!=': return v !== c.value;
+    }
+  }
 
   private pushHistory(): void {
     if (!this.hasConsumed) {

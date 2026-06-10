@@ -6,6 +6,7 @@ import scenario4 from './4';
 import scenario5 from './5';
 import scenario6 from './6';
 import scenario7 from './7';
+import scenario8 from './8';
 
 export const scenarioRegistry: Record<string, ScenarioFile> = {
   '1': scenario1,
@@ -15,6 +16,7 @@ export const scenarioRegistry: Record<string, ScenarioFile> = {
   '5': scenario5,
   '6': scenario6,
   '7': scenario7,
+  '8': scenario8,
 };
 
 // シナリオIDからSaveLoadItemで使うラベル名にする
@@ -26,6 +28,7 @@ export const chapterLabels: Record<string, string> = {
   '5': '第5章',
   '6': '第6章',
   '7': '第7章',
+  '8': '第8章',
   'end-kyuudou': '終幕',
   'end-hokanbu': '終幕',
   'end-maverick': '終幕',

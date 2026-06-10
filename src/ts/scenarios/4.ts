@@ -154,6 +154,9 @@ const scenario: ScenarioFile = {
             text: '自分でもよくわからない引力で、足が動いていた。',
           },
         ],
+        points: {
+          aobaPoints: 1,
+        },
         next: '5',
       },
       {

@@ -464,6 +464,9 @@ const scenario: ScenarioFile = {
             ],
           },
         ],
+        points: {
+          aobaPoints: 1,
+        },
       },
       {
         buttonText: '「すぐ見つかってよかったです」',

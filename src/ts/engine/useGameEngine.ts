@@ -22,7 +22,8 @@ export const createInitialState = (scenarioId = '1'): GameState => ({
     faceId: null,
   },
   rootChapter: chapterLabels[scenarioId] ?? scenarioId,
-  version: 1,
+  points: {},
+  version: 2,
 });
 
 export function resetGameEngine(initial: GameState = createInitialState()): void {

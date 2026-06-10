@@ -26,11 +26,22 @@ export type ScenarioLine = {
   choiceId?: string;
 };
 
+/** 選択肢の表示条件。points[key] を value と比較する。 */
+export type Condition = {
+  key: string;
+  op: '>=' | '<=' | '>' | '<' | '==' | '!=';
+  value: number;
+};
+
 export type Choice = {
   buttonText: string;
   branch: ScenarioLine[];
   /** 分岐終了時にジャンプする別シナリオID。省略時は親フローへ戻る。 */
   next?: string;
+  /** 選択時に points へ加算する {変数名: 増分}。 */
+  points?: Record<string, number>;
+  /** 全条件を満たすときだけ表示する。省略時は常に表示。 */
+  showIf?: Condition[];
 };
 
 export type ScenarioFile = {
@@ -72,5 +83,7 @@ export type GameState = {
   progress: ProgressState;
   snapshot: SceneSnapshot;
   rootChapter: string;
+  /** 選択肢で加算される好感度などの変数。{変数名: 値}。 */
+  points: Record<string, number>;
   version: number; // セーブデータマイグレーション用
 };

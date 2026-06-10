@@ -101,10 +101,54 @@ def parse_command(raw: str) -> dict:
 
 FRONTMATTER_RE = re.compile(r'\A---\s*\n(.*?)\n---\s*(?:\n|$)(.*)\Z', re.DOTALL)
 SPEAKER_RE = re.compile(r'^([^\s:][^:]*?):\s+(.*)$')
-# `- ボタン文字列 -> nextScenarioId` の解析。next は任意。registry のキーに使う
-# ASCII 識別子 (英数字と `_`)。数字のみのID (例: `6`) も可。日本語等は不可。
-BRANCH_RE = re.compile(r'^(.+?)(?:\s+->\s+([A-Za-z0-9_]+))?\s*$')
+# `- ボタン文字列 (効果) [表示条件] -> nextScenarioId` の解析。
+#   効果 / 条件 / next はいずれも任意。この順で書く。
+#   効果・条件の区切りは ASCII の () [] 。ボタン文字列に使うと誤解析されるので
+#   日本語の括弧は全角 （） ［］ を使うこと。
+#   next は registry のキー = ASCII 識別子 (英数字と `_` `-`)。数字のみのID も可。
+BRANCH_RE = re.compile(
+    r'^(?P<button>.+?)'
+    r'(?:\s*\((?P<points>[^)]*)\))?'
+    r'(?:\s*\[(?P<cond>[^\]]*)\])?'
+    r'(?:\s+->\s+(?P<next>[A-Za-z0-9_-]+))?'
+    r'\s*$'
+)
+# 効果: `変数名+2` / `変数名-1` (カンマ区切りで複数)
+EFFECT_RE = re.compile(r'^([A-Za-z_]\w*)\s*([+-])\s*(\d+)$')
+# 表示条件: `変数名>=3` など (カンマ区切りは AND)
+COND_RE = re.compile(r'^([A-Za-z_]\w*)\s*(>=|<=|==|!=|>|<)\s*(-?\d+)$')
 BRANCH_INDENT = 4
+
+
+def parse_effects(raw: str) -> dict:
+    out: dict = {}
+    for part in raw.split(','):
+        s = part.strip()
+        if not s:
+            continue
+        m = EFFECT_RE.match(s)
+        if not m:
+            raise ValueError(f"選択肢の効果が不正: {s!r} (例: aobaPoints+2)")
+        n = int(m.group(3))
+        out[m.group(1)] = out.get(m.group(1), 0) + (n if m.group(2) == '+' else -n)
+    if not out:
+        raise ValueError("() 内に効果がありません")
+    return out
+
+
+def parse_conditions(raw: str) -> list:
+    out: list = []
+    for part in raw.split(','):
+        s = part.strip()
+        if not s:
+            continue
+        m = COND_RE.match(s)
+        if not m:
+            raise ValueError(f"選択肢の表示条件が不正: {s!r} (例: aobaPoints>=3)")
+        out.append({'key': m.group(1), 'op': m.group(2), 'value': int(m.group(3))})
+    if not out:
+        raise ValueError("[] 内に条件がありません")
+    return out
 
 
 def extract_frontmatter(text: str) -> tuple[dict, str]:
@@ -218,15 +262,18 @@ class _Parser:
             m = BRANCH_RE.match(raw)
             if not m:
                 raise ValueError(f"branch ヘッダが不正: {ln!r}")
-            button = m.group(1).strip()
-            next_id = m.group(2)
+            button = m.group('button').strip()
             if not button:
                 raise ValueError(f"branch のボタン文字列が空: {ln!r}")
             self.i += 1
             body = self.parse_block(indent + BRANCH_INDENT)
             branch: dict = {'buttonText': button, 'branch': body}
-            if next_id:
-                branch['next'] = next_id
+            if m.group('points') is not None:
+                branch['points'] = parse_effects(m.group('points'))
+            if m.group('cond') is not None:
+                branch['showIf'] = parse_conditions(m.group('cond'))
+            if m.group('next'):
+                branch['next'] = m.group('next')
             branches.append(branch)
         if not branches:
             raise ValueError(f"choice '{choice_id}' に branch がありません")
