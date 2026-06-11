@@ -7,6 +7,7 @@ import SettingsPage from "./pages/SettingsPage";
 import LoadDataPage from "./pages/LoadDataPage";
 import SaveDataPage from "./pages/SaveDataPage";
 import GamePage from "./pages/GamePage";
+import CollectionsPage from "./pages/CollectionsPage";
 
 export const router = createHashRouter(
   [
@@ -19,6 +20,7 @@ export const router = createHashRouter(
         { path: "/settings", element: <SettingsPage />, handle: { mainTitle: "設定", subTitle: "Configuration" }, },
         { path: "/load", element: <LoadDataPage />, handle: { mainTitle: "ロード", subTitle: "Load Data" }, },
         { path: "/save", element: <SaveDataPage />, handle: { mainTitle: "セーブ", subTitle: "Save Data" }, },
+        { path: "/collections", element: <CollectionsPage />, handle: { mainTitle: "コレクション", subTitle: "Collection" }, },
       ]
     },
   ],

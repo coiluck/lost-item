@@ -5,11 +5,12 @@ import { useGameStore } from '../stores/gameStore';
 import { useSettingsStore } from '../stores/settingsStore';
 import { Background } from '../components/Background';
 import { CharacterSprite, CharacterFace } from '../components/Character';
+import { unlockEnding } from '../save/endingStorage';
 import '../../css/pages/GamePage.css';
 
 export default function GamePage() {
   const navigate = useNavigate();
-  const { start, advance, goBack, selectChoice } = useGameEngine(createInitialState());
+  const { start, advance, goBack, selectChoice, getState } = useGameEngine(createInitialState());
   const snapshot = useGameStore((s) => s.snapshot);
   const motion = useGameStore((s) => s.motion);
   const pendingChoice = useGameStore((s) => s.pendingChoice);
@@ -69,6 +70,17 @@ export default function GamePage() {
 
   const isTyping = !!snapshot.text && displayedText.length < snapshot.text.length;
 
+  // シナリオ終端。新規エンディングならコレクションへ。それ以外はトップへ
+  const finishGame = async () => {
+    const endingId = getState().progress.scenarioId;
+    const isNewEnding = await unlockEnding(endingId);
+    if (isNewEnding) {
+      navigate('/collections', { state: { unlocked: endingId } });
+    } else {
+      navigate('/top');
+    }
+  };
+
   const handleClick = async () => {
     if (pendingChoice || advancingRef.current) return;
     if (isTyping) {
@@ -79,7 +91,7 @@ export default function GamePage() {
     advancingRef.current = true;
     try {
       const result = await advance();
-      if (result.kind === 'end') navigate('/top');
+      if (result.kind === 'end') await finishGame();
     } finally {
       advancingRef.current = false;
     }
@@ -100,7 +112,7 @@ export default function GamePage() {
         const result = await advance();
         if (result.kind === 'end') {
           skipPendingRef.current = 0;
-          navigate('/top');
+          await finishGame();
           return;
         }
         if (result.kind === 'choice') {

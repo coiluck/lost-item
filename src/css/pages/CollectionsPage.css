@@ -1,0 +1,94 @@
+/* 今回解放したエンディングのバナー */
+.collections-unlocked-banner {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 1rem 1.5rem;
+  color: var(--white);
+  background-color: var(--red);
+  border-left: 2px solid var(--navy);
+  animation: collectionsBannerIn 1.2s ease-out both;
+}
+@keyframes collectionsBannerIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.collections-unlocked-label {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: .8rem;
+  letter-spacing: .2rem;
+  opacity: .85;
+}
+.collections-unlocked-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: .1rem;
+}
+
+/* エンディング一覧 */
+.collections-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: clamp(1rem, -2rem + 8vw, 3rem);
+}
+
+.collections-item {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--accent-light);
+  border-bottom: 1px solid var(--accent-light);
+  border-left: 2px solid transparent;
+  transition: all .3s ease-in-out;
+}
+.collections-item.unlocked:hover {
+  background-color: var(--paper-dark);
+  border-left: 2px solid var(--accent);
+}
+@media (min-width: 1024px) {
+  .collections-item {
+    width: 70%;
+  }
+}
+
+/* 未解放 */
+.collections-item.locked {
+  opacity: .5;
+}
+
+/* 今回解放 */
+.collections-item.new {
+  border-left: 2px solid var(--red);
+  background-color: var(--paper-dark);
+}
+
+.collections-item-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  color: var(--navy);
+}
+.collections-item-subtitle {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: .85rem;
+  letter-spacing: .05rem;
+  color: var(--accent-light);
+}
+.collections-item-description {
+  margin-top: .25rem;
+  font-size: .9rem;
+  line-height: 1.7;
+  color: var(--navy-light);
+}

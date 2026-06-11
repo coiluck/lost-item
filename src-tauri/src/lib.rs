@@ -1,5 +1,6 @@
 use tauri::Manager;
 
+mod endings;
 mod savedata;
 mod settings;
 
@@ -29,6 +30,8 @@ pub fn run() {
             savedata::savedata_get,
             savedata::savedata_set,
             savedata::savedata_delete,
+            endings::endings_get,
+            endings::endings_unlock,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

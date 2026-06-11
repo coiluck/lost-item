@@ -15,7 +15,7 @@ interface MenuItem {
 const MENU_ITEMS: MenuItem[] = [
   { id: "start", labelJa: "はじめから", labelEn: "New Game", path: "/game" },
   { id: "continue", labelJa: "つづきから", labelEn: "Load Data", path: "/load" },
-  { id: "gallery", labelJa: "コレクション", labelEn: "Collection", path: "/gallery" },
+  { id: "collections", labelJa: "コレクション", labelEn: "Collection", path: "/collections" },
   { id: "settings", labelJa: "設定", labelEn: "Configuration", path: "/settings" },
 ];
 
