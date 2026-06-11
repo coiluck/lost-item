@@ -35,7 +35,6 @@ function Index() {
     <div className="page fade-in">
       <div className="top-container">
         <div className="top-text-container">
-          <h1>それはあなたのものですか</h1>
           <nav>
             {MENU_ITEMS.map((item, index) => (
               <button
@@ -57,7 +56,9 @@ function Index() {
           </nav>
         </div>
 
-        <div className="top-background"></div>
+        <div className="top-background">
+          <img src="/assets/images/background/bushitu_evening.jpg" alt="top-background" />
+        </div>
       </div>
 
       <footer className="top-footer">

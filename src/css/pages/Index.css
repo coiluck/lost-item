@@ -1,17 +1,18 @@
 .top-container {
   display: grid;
   grid-template-columns: auto 1fr;
+  grid-template-rows: minmax(0, 1fr);
   gap: 1rem;
   height: 100%;
+  overflow: hidden;
 }
 
 .top-text-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  gap: 1rem;
+  justify-content: flex-end;
   height: 100%;
+  padding-bottom: 1rem;
 }
 
 /* menu */
@@ -113,6 +114,45 @@
 }
 .top-menu-item:hover .top-menu-item-line {
   width: 3rem;
+}
+
+/* background */
+.top-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.top-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+      linear-gradient(90deg,
+      var(--paper) 0%,
+      rgb(from var(--paper) r g b / 0.92) 26%,
+      rgb(from var(--paper) r g b / 0.5) 55%,
+      rgb(from var(--paper) r g b / 0.15) 100%),
+      linear-gradient(0deg,
+      rgb(from var(--paper) r g b / 0.55) 0%,
+      transparent 30%);
+}
+.top-background::after {
+  content: 'それはあなたのものですか';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: clamp(2rem, 1rem + 2vw, 3rem);
+  letter-spacing:clamp(0.2rem, -0.2rem + 0.8vw, 0.6rem);
+  color: var(--navy);
+  text-shadow: 2px 2px 4px var(--paper);
+}
+.top-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 
