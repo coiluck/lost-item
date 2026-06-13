@@ -41,6 +41,7 @@ export function reduceLine(snapshot: SceneSnapshot, line: ScenarioLine): SceneSn
     ...snapshot,
     text: line.text,
     speaker: line.speaker ?? '',
+    voice: line.voice ? { path: line.voice } : null,
     faceId: null,
   };
   for (const cmd of line.commands ?? []) {

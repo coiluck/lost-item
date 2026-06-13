@@ -120,6 +120,27 @@ Alice: 続き
 次の台詞。
 ```
 
+### ボイス (`@voice <声ID>`)
+
+キャラボイスのある段落には、その段落のどこか1行に `@voice <声ID>` を書きます。`<声ID>` は**実際に喋るキャラ**を必ず明示します (表示上の話者とは独立。`？？？` 表示や話者なしの地の文でも声の主を指定する)。
+
+```markdown
+@char: aoba, smile
+@voice aoba
+青葉: おはよう
+
+# 表示は ？？？ だが声は霞
+@char: kasumi, normal
+@voice kasumi
+？？？: 陽春、今日バイトじゃないの
+```
+
+コンパイル時に `compile.py` が音声ファイルのパスを割り当て、`voice: '/assets/audio/voice/<声ID>/<ファイル名>.wav'` として生成 `.ts` に埋め込みます。
+
+- パスのフォルダは `<声ID>`。ファイル名は **そのファイル内で・その声IDの何番目の発言か** で決まる (`<ファイルstem>-<連番>`)。例: `1.md` の aoba の 2 番目 → `1-2.wav`
+- `<声ID>` は ASCII 識別子 (`[A-Za-z0-9_-]+`)。常に必須 (`@voice` 単独・引数なしはエラー)
+- 声優 / TTS 単位で集約したいときは `collect_voice.py` を使う (`python collect_voice.py` → `voice/<声ID>.md` に `本文,ファイル名` を出力)
+
 ## 選択肢
 
 ```markdown

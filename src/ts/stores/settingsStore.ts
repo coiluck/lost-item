@@ -9,9 +9,11 @@ type SettingsState = {
   masterVolume: number;
   bgmVolume: number;
   seVolume: number;
+  cvVolume: number;
   setMasterVolume: (volume: number) => void;
   setBgmVolume: (volume: number) => void;
   setSeVolume: (volume: number) => void;
+  setCvVolume: (volume: number) => void;
   loadAudioSettings: () => Promise<void>;
 
   // text
@@ -41,6 +43,7 @@ export const useSettingsStore = create<SettingsState>((set) => ({
   masterVolume: 1,
   bgmVolume: 3,
   seVolume: 8,
+  cvVolume: 5,
   setMasterVolume: (volume: number) => {
     set({ masterVolume: volume });
     setSetting('masterVolume', volume);
@@ -53,13 +56,18 @@ export const useSettingsStore = create<SettingsState>((set) => ({
     set({ seVolume: volume });
     setSetting('seVolume', volume);
   },
+  setCvVolume: (volume: number) => {
+    set({ cvVolume: volume });
+    setSetting('cvVolume', volume);
+  },
   loadAudioSettings: async () => {
-    const [masterVolume, bgmVolume, seVolume] = await Promise.all([
+    const [masterVolume, bgmVolume, seVolume, cvVolume] = await Promise.all([
       getSetting<number>('masterVolume', 1),
       getSetting<number>('bgmVolume', 3),
       getSetting<number>('seVolume', 8),
+      getSetting<number>('cvVolume', 5),
     ]);
-    set({ masterVolume, bgmVolume, seVolume });
+    set({ masterVolume, bgmVolume, seVolume, cvVolume });
   },
 
   // text

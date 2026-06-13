@@ -22,6 +22,7 @@ export type CommandType = ScenarioCommand['type'];
 export type ScenarioLine = {
   text: string;
   speaker?: string;
+  voice?: string; // 音声ファイルのパス。compile.py が @voice から割り当てる
   commands?: ScenarioCommand[];
   choiceId?: string;
 };
@@ -58,6 +59,7 @@ export type SceneSnapshot = {
   bgm: { file: string } | null;
   text: string;
   speaker: string;
+  voice: { path: string } | null;
   // 現在の行の char 命令で指定されたキャラ id。char 命令が無い行では null
   faceId: string | null;
 };

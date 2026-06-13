@@ -147,3 +147,49 @@ class SE {
 
 const se = new SE();
 export { se };
+
+class Voice {
+  private current: HTMLAudioElement | null = null;
+  private gain: GainNode | null = null;
+  private volume: number = 1.0;
+
+  private ensureGain(): GainNode {
+    if (!this.gain) {
+      const ctx = getAudioContext();
+      this.gain = ctx.createGain();
+      this.gain.gain.value = this.volume;
+      this.gain.connect(getMasterGain());
+    }
+    return this.gain;
+  }
+
+  private clampVolume(volume: number) {
+    // 入力は1 ~ 10。出力は0 ~ 1。
+    const clampedVolume = volume / 10;
+    return Math.max(0, Math.min(clampedVolume, 1));
+  }
+
+  setVolume(volume: number) {
+    this.volume = this.clampVolume(volume);
+    this.ensureGain().gain.value = this.volume;
+  }
+
+  async play(path: string) {
+    this.stop(); // 前のは止める
+
+    const audio = new Audio(path);
+    const ctx = getAudioContext();
+    const src = ctx.createMediaElementSource(audio);
+    src.connect(this.ensureGain());
+    audio.onended = () => { src.disconnect(); this.current = null; };
+    this.current = audio;
+    audio.play().catch(e => console.warn('再生に失敗しました:', e));
+  }
+
+  stop() {
+    if (this.current) { this.current.pause(); this.current = null; }
+  }
+}
+
+const voice = new Voice();
+export { voice };

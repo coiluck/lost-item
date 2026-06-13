@@ -119,6 +119,10 @@ EFFECT_RE = re.compile(r'^([A-Za-z_]\w*)\s*([+-])\s*(\d+)$')
 COND_RE = re.compile(r'^([A-Za-z_]\w*)\s*(>=|<=|==|!=|>|<)\s*(-?\d+)$')
 BRANCH_INDENT = 4
 
+# @voice <声ID> — ボイスの声の主を必ず明示する。<声ID> は出力パスのフォルダになる。
+VOICE_HEAD_RE = re.compile(r'^@voice\b')
+VOICE_RE = re.compile(r'^@voice\s+([A-Za-z0-9_-]+)$')
+
 
 def parse_effects(raw: str) -> dict:
     out: dict = {}
@@ -186,8 +190,17 @@ def paragraph_to_line(para: list[str]) -> dict:
     text = ''
     speaker: str | None = None
     text_seen = False
+    voice_id: str | None = None
     for raw in para:
         s = raw.strip()
+        if VOICE_HEAD_RE.match(s):
+            m = VOICE_RE.match(s)
+            if not m:
+                raise ValueError(f"@voice には声ID が必要です (例: @voice aoba): {s!r}")
+            if voice_id is not None:
+                raise ValueError(f"段落に @voice が2つ以上あります: {para!r}")
+            voice_id = m.group(1)
+            continue
         if s.startswith('@'):
             commands.append(parse_command(s))
             continue
@@ -201,6 +214,8 @@ def paragraph_to_line(para: list[str]) -> dict:
     out: dict = {'text': text}
     if speaker is not None:
         out['speaker'] = speaker
+    if voice_id is not None:
+        out['voice'] = voice_id
     if commands:
         out['commands'] = commands
     return out
@@ -321,6 +336,31 @@ def parse_body(body: str) -> tuple[list[dict], dict]:
     return _Parser(lines).parse()
 
 
+def iter_content_lines(lines: list[dict], choices: dict):
+    """ScenarioLine を文書順で列挙する。choice マーカーは対応する branch 本体に
+    展開し、入れ子も潜る (choices は scenario レベルで flat)。"""
+    for ln in lines:
+        cid = ln.get('choiceId')
+        if cid is not None:
+            for branch in choices[cid]:
+                yield from iter_content_lines(branch['branch'], choices)
+        else:
+            yield ln
+
+
+def iter_voice_assignments(lines: list[dict], choices: dict, file_stem: str):
+    """voice 付きの行に、その声ID内での連番からファイル名を割り当てて
+    (line, voice_id, file_name) を文書順で yield する。
+    file_name はフォルダ・拡張子なし (例: '1-2')。compile と collect で共有する。"""
+    counters: dict[str, int] = {}
+    for ln in iter_content_lines(lines, choices):
+        vid = ln.get('voice')
+        if not vid:
+            continue
+        counters[vid] = counters.get(vid, 0) + 1
+        yield ln, vid, f'{file_stem}-{counters[vid]}'
+
+
 # ============================================================
 # TypeScript 出力
 # ============================================================
@@ -380,6 +420,8 @@ def compile_file(src: Path) -> Path:
     text = src.read_text(encoding='utf-8')
     front, body = extract_frontmatter(text)
     lines, choices = parse_body(body)
+    for ln, vid, name in iter_voice_assignments(lines, choices, src.stem):
+        ln['voice'] = f'/assets/audio/voice/{vid}/{name}.wav'
     scenario: dict = {'id': front['id']}
     if 'next' in front:
         scenario['next'] = front['next']
