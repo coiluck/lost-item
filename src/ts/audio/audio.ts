@@ -133,7 +133,7 @@ class SE {
   }
 
   async play(fileName: string) {
-    const wavList: string[] = ['button1', 'button2', 'button3', 'button_close', 'day', 'phone_call', 'disable'];
+    const wavList: string[] = ['theme', 'click'];
     const extension = wavList.includes(fileName) ? '.wav' : '.mp3';
 
     const audio = new Audio(`/assets/audio/se/${fileName}${extension}`);

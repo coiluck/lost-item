@@ -1,6 +1,7 @@
 // ts/pages/LogoPage.tsx
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { voice } from "../audio/audio";
 import "../../css/pages/LogoPage.css";
 
 function LogoPage() {
@@ -17,9 +18,16 @@ function LogoPage() {
     return logoAnimationArray[Math.floor(Math.random() * logoAnimationArray.length)];
   }, []);
 
+  const voicePath = useMemo(() => {
+    const voiceList = ['aoba', 'haru', 'kasumi', 'yashima'];
+    const name = voiceList[Math.floor(Math.random() * voiceList.length)];
+    return `/assets/audio/title/${name}.wav`;
+  }, []);
+
   useEffect(() => {
     const startTimer = setTimeout(() => {
       setShowText(true);
+      void voice.play(voicePath);
 
       const totalAnimationTimeSec =
         (textTop.length * animationDelay + 0.2) +
@@ -37,7 +45,7 @@ function LogoPage() {
     }, 1000);
 
     return () => clearTimeout(startTimer);
-  }, [navigate, animationType, textTop.length, textBottom.length]);
+  }, [navigate, animationType, textTop.length, textBottom.length, voicePath]);
 
   // 表示部分
   const renderAnimatedText = (text: string, delayStart: number) => {

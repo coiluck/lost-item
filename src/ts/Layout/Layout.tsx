@@ -1,5 +1,6 @@
 // ts/Layout/Layout.tsx
 import { useMatches, useNavigate, useLocation, Outlet } from "react-router-dom";
+import { se } from "../audio/audio";
 import "../../css/layouts/Layout.css";
 
 type LayoutProps = {
@@ -14,6 +15,7 @@ export default function Layout() {
   const location = useLocation();
 
   const handleClose = () => {
+    se.play("click");
     if (location.state?.from === "game") {
       navigate(-1);
     } else {

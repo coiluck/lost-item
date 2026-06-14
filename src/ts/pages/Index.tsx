@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { resetGameEngine } from "../engine/useGameEngine";
-import { bgm } from "../audio/audio";
+import { bgm, se } from "../audio/audio";
 import "../../css/pages/Index.css";
 
 interface MenuItem {
@@ -10,13 +10,14 @@ interface MenuItem {
   labelJa: string;
   labelEn: string;
   path: string;
+  se: string;
 };
 
 const MENU_ITEMS: MenuItem[] = [
-  { id: "start", labelJa: "はじめから", labelEn: "New Game", path: "/game" },
-  { id: "continue", labelJa: "つづきから", labelEn: "Load Data", path: "/load" },
-  { id: "collections", labelJa: "コレクション", labelEn: "Collection", path: "/collections" },
-  { id: "settings", labelJa: "設定", labelEn: "Configuration", path: "/settings" },
+  { id: "start", labelJa: "はじめから", labelEn: "New Game", path: "/game", se: "button-sub" },
+  { id: "continue", labelJa: "つづきから", labelEn: "Load Data", path: "/load", se: "button-sub" },
+  { id: "collections", labelJa: "コレクション", labelEn: "Collection", path: "/collections", se: "button-sub" },
+  { id: "settings", labelJa: "設定", labelEn: "Configuration", path: "/settings", se: "button-main" },
 ];
 
 function Index() {
@@ -41,7 +42,7 @@ function Index() {
                 key={item.id}
                 className="top-menu-item"
                 style={{ "--delay": `${index * 80}ms` } as React.CSSProperties}
-                onClick={() => handleClick(item)}
+                onClick={() => { handleClick(item); se.play(item.se); }}
               >
                 <span className="top-menu-item-indicator" aria-hidden="true">
                   <span className="top-menu-item-diamond" />

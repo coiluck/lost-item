@@ -6,6 +6,7 @@ import { useSettingsStore } from '../stores/settingsStore';
 import { Background } from '../components/Background';
 import { CharacterSprite, CharacterFace } from '../components/Character';
 import { unlockEnding } from '../save/endingStorage';
+import { se } from '../audio/audio';
 import '../../css/pages/GamePage.css';
 
 export default function GamePage() {
@@ -139,23 +140,28 @@ export default function GamePage() {
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
+    se.play("click");
     instantNextRef.current = true;
     if (!goBack()) instantNextRef.current = false;
   };
   const handleSettings = (e: React.MouseEvent) => {
     e.stopPropagation();
+    se.play("click");
     navigate('/settings', { state: { from: 'game' } });
   };
   const handleSave = (e: React.MouseEvent) => {
     e.stopPropagation();
+    se.play("click");
     navigate('/save', { state: { from: 'game' } });
   };
   const handleLoad = (e: React.MouseEvent) => {
     e.stopPropagation();
+    se.play("click");
     navigate('/load', { state: { from: 'game' } });
   };
   const handleExit = (e: React.MouseEvent) => {
     e.stopPropagation();
+    se.play("button-main");
     navigate('/top');
   };
   const handleChoice = async (index: number, e: React.MouseEvent) => {

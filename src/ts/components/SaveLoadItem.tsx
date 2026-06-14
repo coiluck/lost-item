@@ -1,5 +1,6 @@
 // ts/components/SaveLoadItem.tsx
 import { useState } from 'react';
+import { se } from '../audio/audio';
 import '../../css/components/SaveLoadItem.css';
 
 interface SaveLoadItemProps {
@@ -64,7 +65,7 @@ export default function SaveLoadItem({
         <div className="saveload-component-item-button-container">
           <button
             className="saveload-component-item-button-main"
-            onClick={onButtonClick}
+            onClick={() => { onButtonClick(); se.play("click"); }}
           >
             ▶︎ {buttonText}
           </button>
