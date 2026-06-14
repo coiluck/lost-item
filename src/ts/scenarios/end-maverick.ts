@@ -32,6 +32,7 @@ const scenario: ScenarioFile = {
     {
       text: 'えー、出さなかったの？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-maverick-1.wav',
       commands: [
         {
           type: 'char',
@@ -47,6 +48,7 @@ const scenario: ScenarioFile = {
     {
       text: '弓道部、待ってたのに',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-maverick-2.wav',
       commands: [
         {
           type: 'char',
@@ -62,6 +64,7 @@ const scenario: ScenarioFile = {
     {
       text: 'むー',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-maverick-3.wav',
       commands: [
         {
           type: 'char',
@@ -83,6 +86,7 @@ const scenario: ScenarioFile = {
     {
       text: 'まあ、無理に入るもんじゃないか',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-maverick-4.wav',
       commands: [
         {
           type: 'char',
@@ -98,6 +102,7 @@ const scenario: ScenarioFile = {
     {
       text: '気が変わったら、いつでも言ってね',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-maverick-5.wav',
       commands: [
         {
           type: 'char',

@@ -54,7 +54,7 @@ const scenario: ScenarioFile = {
       speaker: '担任',
     },
     {
-      text: 'そう言って担任は窓側の後ろの席を指した。'
+      text: 'そう言って担任は窓側の後ろの席を指した。',
     },
     {
       text: '春の光が、机の木目を白く照らしている。',
@@ -86,6 +86,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ねえねえ、藤波さんって呼んでいい？ 私、橘陽春っていうんだけど',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-1.wav',
       commands: [
         {
           type: 'char',
@@ -101,6 +102,7 @@ const scenario: ScenarioFile = {
     {
       text: 'どこから来たの？ 遠い？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-2.wav',
       commands: [
         {
           type: 'char',
@@ -117,6 +119,7 @@ const scenario: ScenarioFile = {
     {
       text: 'へえー！ じゃあ方言とかある？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-3.wav',
       commands: [
         {
           type: 'char',
@@ -132,6 +135,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ちょっと残念',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-4.wav',
       commands: [
         {
           type: 'char',
@@ -150,10 +154,12 @@ const scenario: ScenarioFile = {
     {
       text: 'ねえ、この辺ってどこか行った？ もしよかったら一緒に――',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-5.wav',
     },
     {
       text: '陽春、今日バイトじゃないの',
       speaker: '？？？',
+      voice: '/assets/audio/voice/kasumi/1-1.wav',
       commands: [
         {
           type: 'char',
@@ -168,6 +174,7 @@ const scenario: ScenarioFile = {
     {
       text: 'あ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-6.wav',
       commands: [
         {
           type: 'char',
@@ -182,6 +189,7 @@ const scenario: ScenarioFile = {
     {
       text: '……忘れてた',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-7.wav',
     },
     {
       text: '大丈夫？',
@@ -190,6 +198,7 @@ const scenario: ScenarioFile = {
     {
       text: '全然大丈夫じゃない！ やばい何時からだっけ！',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-8.wav',
       commands: [
         {
           type: 'char',
@@ -208,6 +217,7 @@ const scenario: ScenarioFile = {
     {
       text: 'また明日ね瑞穂ちゃん！ ごめんね！',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/1-9.wav',
       commands: [
         {
           type: 'char',
@@ -258,7 +268,7 @@ const scenario: ScenarioFile = {
       text: '体育館からは、シューズの鳴る音。',
     },
     {
-      text: '窓の外を見ると、ユニフォームを着た集団が笑いながら走っていた。'
+      text: '窓の外を見ると、ユニフォームを着た集団が笑いながら走っていた。',
     },
     {
       text: '（まあ、話せたからいいや。初日にしては上出来）',

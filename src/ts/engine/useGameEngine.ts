@@ -2,7 +2,7 @@ import { ScenarioEngine, type AdvanceResult } from './ScenarioEngine';
 import { executeTransients } from './CommandExecutor';
 import { scenarioRegistry, chapterLabels } from '../scenarios';
 import { useGameStore } from '../stores/gameStore';
-import { bgm } from '../audio/audio';
+import { bgm, voice } from '../audio/audio';
 import type { Choice, GameState } from './types';
 
 // エンジンと「初回advance済みフラグ」「最後に再生したBGMファイル名」は
@@ -61,10 +61,18 @@ export function useGameEngine(initial: GameState) {
     syncBgm(s.snapshot.bgm?.file ?? null);
   };
 
+  // 今の音声を止めて、現在のラインの @voice を再生し直す（なければ止めるだけ）。
+  const syncVoice = () => {
+    const v = engine.getState().snapshot.voice;
+    if (v) void voice.play(v.path);
+    else voice.stop();
+  };
+
   const advance = async (): Promise<AdvanceResult> => {
     const result = engine.advance();
     if (result.kind === 'line') {
       syncFromState();
+      syncVoice();
       // @char に bounce フラグが付いた立ち絵をはねさせる（話している演出）。
       for (const cmd of result.line.commands ?? []) {
         if (cmd.type === 'char' && cmd.bounce) fireBounce(cmd.id);
@@ -97,6 +105,7 @@ export function useGameEngine(initial: GameState) {
     if (!engine.goBack()) return false;
     setPendingChoice(null);
     syncFromState();
+    syncVoice();
     return true;
   };
 

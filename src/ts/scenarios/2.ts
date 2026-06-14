@@ -122,6 +122,7 @@ const scenario: ScenarioFile = {
     {
       text: '……どうぞ',
       speaker: '？？？',
+      voice: '/assets/audio/voice/aoba/2-1.wav',
     },
     {
       text: '静かな声だった。',
@@ -174,6 +175,7 @@ const scenario: ScenarioFile = {
     {
       text: '……これ、私のですね',
       speaker: '？？？',
+      voice: '/assets/audio/voice/aoba/2-2.wav',
       commands: [
         {
           type: 'char',
@@ -189,6 +191,7 @@ const scenario: ScenarioFile = {
     {
       text: '朝、落としたのかもしれません',
       speaker: '？？？',
+      voice: '/assets/audio/voice/aoba/2-3.wav',
       commands: [
         {
           type: 'char',
@@ -210,6 +213,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ルールなので',
       speaker: '？？？',
+      voice: '/assets/audio/voice/aoba/2-4.wav',
       commands: [
         {
           type: 'char',
@@ -227,6 +231,7 @@ const scenario: ScenarioFile = {
     {
       text: 'いけませんね、保管部員なのに',
       speaker: '？？？',
+      voice: '/assets/audio/voice/aoba/2-5.wav',
       commands: [
         {
           type: 'char',
@@ -248,6 +253,7 @@ const scenario: ScenarioFile = {
     {
       text: '……帆波青葉、といいます',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/2-6.wav',
       commands: [
         {
           type: 'char',
@@ -262,6 +268,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ここの部員。二年生です',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/2-7.wav',
       commands: [
         {
           type: 'char',
@@ -277,6 +284,7 @@ const scenario: ScenarioFile = {
     {
       text: 'あなたは？',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/2-8.wav',
       commands: [
         {
           type: 'char',
@@ -292,6 +300,7 @@ const scenario: ScenarioFile = {
     {
       text: 'そう。藤波さん',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/2-9.wav',
       commands: [
         {
           type: 'char',
@@ -334,6 +343,7 @@ const scenario: ScenarioFile = {
     {
       text: '取りに来る人もいます',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/2-10.wav',
       commands: [
         {
           type: 'char',
@@ -348,6 +358,7 @@ const scenario: ScenarioFile = {
     {
       text: '来ない人も、います',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/2-11.wav',
       commands: [
         {
           type: 'char',
@@ -382,6 +393,7 @@ const scenario: ScenarioFile = {
     {
       text: '……そうですね',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/2-12.wav',
       commands: [
         {
           type: 'char',

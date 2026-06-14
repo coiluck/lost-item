@@ -107,6 +107,7 @@ const scenario: ScenarioFile = {
     {
       text: '……藤波さん',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-1.wav',
       commands: [
         {
           type: 'char',
@@ -123,6 +124,7 @@ const scenario: ScenarioFile = {
     {
       text: '……べつに',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-2.wav',
       commands: [
         {
           type: 'char',
@@ -145,6 +147,7 @@ const scenario: ScenarioFile = {
     {
       text: '……そうです',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-3.wav',
       commands: [
         {
           type: 'char',
@@ -161,7 +164,10 @@ const scenario: ScenarioFile = {
       text: '（ほんとに？）',
     },
     {
-      text: '棚に目をやると、カラフルな柄のものや、罫線の細かいものや、ちょっと可愛らしいものが混じっていた。保管部の棚にあった、あの几帳面なラベルたちとは、少し雰囲気が違うような。',
+      text: '棚に目をやると、カラフルな柄のものや、罫線の細かいものや、ちょっと可愛らしいものが混じっていた。',
+    },
+    {
+      text: '保管部の棚にあった、あの几帳面なラベルたちとは、少し雰囲気が違うような。',
     },
     {
       text: '黙っていると、先輩はまた棚に向き直った。',
@@ -179,6 +185,7 @@ const scenario: ScenarioFile = {
     {
       text: '……見ないでください',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-4.wav',
       commands: [
         {
           type: 'char',
@@ -195,6 +202,7 @@ const scenario: ScenarioFile = {
     {
       text: '……覚えられると、困ります',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-5.wav',
       commands: [
         {
           type: 'char',
@@ -211,6 +219,7 @@ const scenario: ScenarioFile = {
     {
       text: '……こういうところを',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-6.wav',
       commands: [
         {
           type: 'char',
@@ -241,6 +250,7 @@ const scenario: ScenarioFile = {
     {
       text: '……笑わないでください',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-7.wav',
       commands: [
         {
           type: 'char',
@@ -257,6 +267,7 @@ const scenario: ScenarioFile = {
     {
       text: '笑っています',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-8.wav',
       commands: [
         {
           type: 'char',
@@ -295,6 +306,7 @@ const scenario: ScenarioFile = {
     {
       text: '……これ、どっちがいいと思いますか',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-9.wav',
       commands: [
         {
           type: 'char',
@@ -323,6 +335,7 @@ const scenario: ScenarioFile = {
     {
       text: '……そうですか',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-10.wav',
       commands: [
         {
           type: 'char',
@@ -342,6 +355,7 @@ const scenario: ScenarioFile = {
     {
       text: 'いいです。参考にしただけなので',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/5-11.wav',
       commands: [
         {
           type: 'char',

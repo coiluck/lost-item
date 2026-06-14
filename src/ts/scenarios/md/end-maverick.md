@@ -17,27 +17,32 @@ id: end-maverick
 # ====== 教室・陽春 ======
 
 @char: haru, surprised
+@voice haru
 陽春: えー、出さなかったの？
 
 瑞穂: うん
 
 @char: haru, trouble
+@voice haru
 陽春: 弓道部、待ってたのに
 
 瑞穂: ごめん
 
 @char: haru, pout
+@voice haru
 陽春: むー
 
 @char: haru, normal
 陽春は頬をふくらませたけど、すぐにいつもの顔に戻った。
 
 @char: haru, normal_open
+@voice haru
 陽春: まあ、無理に入るもんじゃないか
 
 瑞穂: うん。誘ってくれて、ありがとう
 
 @char: haru, happy
+@voice haru
 陽春: 気が変わったら、いつでも言ってね
 
 瑞穂: うん

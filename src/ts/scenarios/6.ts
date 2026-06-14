@@ -32,6 +32,7 @@ const scenario: ScenarioFile = {
     {
       text: '瑞穂ちゃん、今日の放課後空いてる？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-1.wav',
       commands: [
         {
           type: 'char',
@@ -47,6 +48,7 @@ const scenario: ScenarioFile = {
     {
       text: 'じゃあ決まり。弓道部の見学、一緒に来て',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-2.wav',
       commands: [
         {
           type: 'char',
@@ -66,6 +68,7 @@ const scenario: ScenarioFile = {
     {
       text: '私、一年から入ってるんだけど。瑞穂ちゃんってなんか、向いてそうじゃない？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-3.wav',
       commands: [
         {
           type: 'char',
@@ -82,6 +85,7 @@ const scenario: ScenarioFile = {
     {
       text: 'なんか、静かな感じするから',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-4.wav',
       commands: [
         {
           type: 'char',
@@ -107,6 +111,7 @@ const scenario: ScenarioFile = {
     {
       text: '関係あると思う。たぶん',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-5.wav',
       commands: [
         {
           type: 'char',
@@ -125,6 +130,7 @@ const scenario: ScenarioFile = {
     {
       text: '見るだけでいいから！ ね？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-6.wav',
       commands: [
         {
           type: 'char',
@@ -147,6 +153,7 @@ const scenario: ScenarioFile = {
     {
       text: 'やった',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-7.wav',
       commands: [
         {
           type: 'char',
@@ -166,6 +173,7 @@ const scenario: ScenarioFile = {
     {
       text: '最初はね',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-8.wav',
       commands: [
         {
           type: 'char',
@@ -205,6 +213,7 @@ const scenario: ScenarioFile = {
     {
       text: 'あ、来た来た。瑞穂ちゃん、紹介するね',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-9.wav',
       commands: [
         {
           type: 'char',
@@ -219,6 +228,7 @@ const scenario: ScenarioFile = {
     {
       text: '橘の友達？ 私、部長の八島。よく来てくれた',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/6-1.wav',
       commands: [
         {
           type: 'char',
@@ -234,6 +244,7 @@ const scenario: ScenarioFile = {
     {
       text: '知ってるよ。陽春からよく聞いてる',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/6-2.wav',
       commands: [
         {
           type: 'char',
@@ -245,6 +256,7 @@ const scenario: ScenarioFile = {
     {
       text: 'そんな言ってないし',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-10.wav',
       commands: [
         {
           type: 'char',
@@ -257,6 +269,7 @@ const scenario: ScenarioFile = {
     {
       text: '言ってた',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/6-3.wav',
       commands: [
         {
           type: 'char',
@@ -271,6 +284,7 @@ const scenario: ScenarioFile = {
     {
       text: '今日は見るだけでいいけど、せっかくだから弓を持ってみる？',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/6-4.wav',
       commands: [
         {
           type: 'char',
@@ -286,6 +300,7 @@ const scenario: ScenarioFile = {
     {
       text: 'やろうやろう',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-11.wav',
       commands: [
         {
           type: 'char',
@@ -312,6 +327,7 @@ const scenario: ScenarioFile = {
     {
       text: '着替えてくるね。そこ座って待ってて',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-12.wav',
       commands: [
         {
           type: 'char',
@@ -373,6 +389,7 @@ const scenario: ScenarioFile = {
     {
       text: 'でしょ！',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-13.wav',
       commands: [
         {
           type: 'char',
@@ -388,6 +405,7 @@ const scenario: ScenarioFile = {
     {
       text: 'じゃあ、ちょっとやってみせるね',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-14.wav',
       commands: [
         {
           type: 'char',
@@ -417,6 +435,7 @@ const scenario: ScenarioFile = {
     {
       text: '……惜しい',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-15.wav',
       commands: [
         {
           type: 'char',
@@ -429,6 +448,7 @@ const scenario: ScenarioFile = {
     {
       text: '肩、また上がってる',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/6-5.wav',
       commands: [
         {
           type: 'char',
@@ -440,6 +460,7 @@ const scenario: ScenarioFile = {
     {
       text: 'うぐ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-16.wav',
       commands: [
         {
           type: 'char',
@@ -504,6 +525,7 @@ const scenario: ScenarioFile = {
     {
       text: 'うん、大好き。一年のとき体験で引いて、それで決めちゃった',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-17.wav',
       commands: [
         {
           type: 'char',
@@ -519,6 +541,7 @@ const scenario: ScenarioFile = {
     {
       text: '入ってくれる？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-18.wav',
       commands: [
         {
           type: 'char',
@@ -535,6 +558,7 @@ const scenario: ScenarioFile = {
     {
       text: 'えー',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-19.wav',
       commands: [
         {
           type: 'char',
@@ -549,6 +573,7 @@ const scenario: ScenarioFile = {
     {
       text: 'なんでわかるの、向いてないって',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-20.wav',
       commands: [
         {
           type: 'char',
@@ -565,6 +590,7 @@ const scenario: ScenarioFile = {
     {
       text: 'なんとなくって何',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-21.wav',
       commands: [
         {
           type: 'char',
@@ -583,6 +609,7 @@ const scenario: ScenarioFile = {
     {
       text: 'まあ、無理には言わないけど。ゆっくり考えてよ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/6-22.wav',
       commands: [
         {
           type: 'char',

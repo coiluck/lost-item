@@ -76,6 +76,7 @@ const scenario: ScenarioFile = {
     {
       text: 'おはよ、瑞穂ちゃん',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-1.wav',
       commands: [
         {
           type: 'char',
@@ -97,6 +98,7 @@ const scenario: ScenarioFile = {
     {
       text: '……えっ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-2.wav',
       commands: [
         {
           type: 'char',
@@ -112,6 +114,7 @@ const scenario: ScenarioFile = {
     {
       text: 'えっ、えっ、ほんとに？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-3.wav',
       commands: [
         {
           type: 'char',
@@ -134,6 +137,7 @@ const scenario: ScenarioFile = {
     {
       text: 'やった——！',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-4.wav',
       commands: [
         {
           type: 'char',
@@ -152,6 +156,7 @@ const scenario: ScenarioFile = {
     {
       text: 'あ、ごめん',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-5.wav',
       commands: [
         {
           type: 'char',
@@ -169,6 +174,7 @@ const scenario: ScenarioFile = {
     {
       text: '向いてないって言ってたのに',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-6.wav',
       commands: [
         {
           type: 'char',
@@ -184,6 +190,7 @@ const scenario: ScenarioFile = {
     {
       text: 'なんで？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-7.wav',
       commands: [
         {
           type: 'char',
@@ -212,6 +219,7 @@ const scenario: ScenarioFile = {
     {
       text: '……そっか',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-8.wav',
       commands: [
         {
           type: 'char',
@@ -227,6 +235,7 @@ const scenario: ScenarioFile = {
     {
       text: 'うん。楽しいよ。絶対',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-9.wav',
     },
     {
       text: '放課後、弓道場。',
@@ -251,6 +260,7 @@ const scenario: ScenarioFile = {
     {
       text: '肩、力入れすぎ。もっと抜いて',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-10.wav',
       commands: [
         {
           type: 'char',
@@ -266,6 +276,7 @@ const scenario: ScenarioFile = {
     {
       text: '最初はみんなそう',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-11.wav',
       commands: [
         {
           type: 'char',
@@ -297,10 +308,12 @@ const scenario: ScenarioFile = {
     {
       text: '橘、人に教えるの下手だな',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/end-kyuudou-1.wav',
     },
     {
       text: 'ええっ、そんなことないし！',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-12.wav',
       commands: [
         {
           type: 'char',
@@ -312,6 +325,7 @@ const scenario: ScenarioFile = {
     {
       text: '藤波さん、肩じゃなくて、背中で引く感じ',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/end-kyuudou-2.wav',
       commands: [
         {
           type: 'char',
@@ -327,6 +341,7 @@ const scenario: ScenarioFile = {
     {
       text: 'そう',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/end-kyuudou-3.wav',
     },
     {
       text: '言われた通りにすると、少しだけ楽になった。',
@@ -337,6 +352,7 @@ const scenario: ScenarioFile = {
     {
       text: 'いける、いける',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-13.wav',
       commands: [
         {
           type: 'char',
@@ -360,6 +376,7 @@ const scenario: ScenarioFile = {
     {
       text: '……うん。まあ、最初だし',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-14.wav',
       commands: [
         {
           type: 'char',
@@ -375,6 +392,7 @@ const scenario: ScenarioFile = {
     {
       text: '私も最初そうだったよ。ほんとに',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-15.wav',
       commands: [
         {
           type: 'char',
@@ -386,6 +404,7 @@ const scenario: ScenarioFile = {
     {
       text: '橘は今もそうだろ',
       speaker: '八島',
+      voice: '/assets/audio/voice/yashima/end-kyuudou-4.wav',
       commands: [
         {
           type: 'char',
@@ -397,6 +416,7 @@ const scenario: ScenarioFile = {
     {
       text: '先輩！',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-16.wav',
       commands: [
         {
           type: 'char',
@@ -417,6 +437,7 @@ const scenario: ScenarioFile = {
     {
       text: '来てくれて、嬉しい',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-17.wav',
       commands: [
         {
           type: 'char',
@@ -432,6 +453,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ずっと、一緒にやりたかったんだ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-18.wav',
     },
     {
       text: '夕方の光が、道場の床を斜めに照らしていた。',
@@ -451,6 +473,7 @@ const scenario: ScenarioFile = {
     {
       text: '明日も来るよね？',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-19.wav',
       commands: [
         {
           type: 'char',
@@ -466,6 +489,7 @@ const scenario: ScenarioFile = {
     {
       text: 'やった',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/end-kyuudou-20.wav',
       commands: [
         {
           type: 'char',

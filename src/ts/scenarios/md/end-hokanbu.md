@@ -26,6 +26,7 @@ id: end-hokanbu
 
 瑞穂: 先輩
 
+@voice aoba
 青葉: ……藤波さん。落とし物ですか
 
 瑞穂: いえ
@@ -39,6 +40,7 @@ id: end-hokanbu
 『保管部』の文字のところで、止まった。
 
 @char: aoba, surprised
+@voice aoba
 青葉: ……これ
 
 瑞穂: 入部届です
@@ -46,14 +48,17 @@ id: end-hokanbu
 少しの間、先輩は何も言わなかった。
 
 @char: aoba, normal
+@voice aoba
 青葉: ……ここ、何もないですよ。大会もないし、活躍もできない
 
 瑞穂: 知ってます
 
+@voice aoba
 青葉: ただ、落とし物を待つだけです
 
 瑞穂: はい
 
+@voice aoba
 青葉: ……それでも？
 
 瑞穂: それがいいんです
@@ -63,10 +68,12 @@ id: end-hokanbu
 それから、ゆっくりと顔を上げた。
 
 @char: aoba, normal
+@voice aoba
 青葉: ……ひとつ、訊いていいですか
 
 瑞穂: はい
 
+@voice aoba
 青葉: これは、ちゃんと、あなたのものですか
 
 ? is_yours
@@ -79,10 +86,12 @@ id: end-hokanbu
 それから、机の引き出しを開けて、新しいタグを取り出した。
 
 @char: aoba, normal
+@voice aoba
 青葉: 入部の手続き、台帳に書きますね
 
 瑞穂: ……それも書くんですか
 
+@voice aoba
 青葉: ルールなので
 
 @char: aoba, smile
@@ -95,6 +104,7 @@ id: end-hokanbu
 日付。氏名。藤波瑞穂。
 
 @char: aoba, smile
+@voice aoba
 青葉: ……これで、二人ですね
 
 瑞穂: 二人です
@@ -106,6 +116,7 @@ id: end-hokanbu
 その手つきが、いつもより少しだけ、嬉しそうに見えた。
 
 @char: aoba, smile
+@voice aoba
 青葉: よろしくお願いします。藤波さん
 
 瑞穂: こちらこそ。先輩

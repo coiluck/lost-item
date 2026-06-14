@@ -29,6 +29,7 @@ const scenario: ScenarioFile = {
     {
       text: '瑞穂ちゃん、それどうするの',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/8-1.wav',
       commands: [
         {
           type: 'char',
@@ -47,6 +48,7 @@ const scenario: ScenarioFile = {
     {
       text: '弓道部、まだ枠あるよ。私と一緒にやろうよ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/8-2.wav',
       commands: [
         {
           type: 'char',
@@ -69,6 +71,7 @@ const scenario: ScenarioFile = {
     {
       text: '向いてないって言ってたけど、向いてなくてもいいじゃん。私だって肩上がるし',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/8-3.wav',
       commands: [
         {
           type: 'char',
@@ -85,6 +88,7 @@ const scenario: ScenarioFile = {
     {
       text: 'えへへ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/8-4.wav',
       commands: [
         {
           type: 'char',
@@ -100,6 +104,7 @@ const scenario: ScenarioFile = {
     {
       text: '一緒だと、楽しいと思うんだけどなあ',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/8-5.wav',
       commands: [
         {
           type: 'char',
@@ -131,6 +136,7 @@ const scenario: ScenarioFile = {
     {
       text: '藤波さん、保管部のこと聞いた？',
       speaker: '霞',
+      voice: '/assets/audio/voice/kasumi/8-1.wav',
       commands: [
         {
           type: 'char',
@@ -147,6 +153,7 @@ const scenario: ScenarioFile = {
     {
       text: '部員、帆波先輩一人なんだって。前からそうらしいけど',
       speaker: '霞',
+      voice: '/assets/audio/voice/kasumi/8-2.wav',
       commands: [
         {
           type: 'char',
@@ -161,6 +168,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ええ、そうなんだ。さびしくないのかな',
       speaker: '陽春',
+      voice: '/assets/audio/voice/haru/8-6.wav',
       commands: [
         {
           type: 'char',
@@ -172,6 +180,7 @@ const scenario: ScenarioFile = {
     {
       text: 'あの人のことだから、平気なんじゃない。一人が好きそうだし',
       speaker: '霞',
+      voice: '/assets/audio/voice/kasumi/8-3.wav',
       commands: [
         {
           type: 'char',

@@ -40,6 +40,7 @@ id: end-kyuudou
 瑞穂: 陽春
 
 @char: haru, happy
+@voice haru
 陽春: おはよ、瑞穂ちゃん
 
 瑞穂: これ
@@ -49,11 +50,13 @@ id: end-kyuudou
 陽春の目が、紙の上を走る。
 
 @char: haru, surprised
+@voice haru
 陽春: ……えっ
 
 瑞穂: 弓道部
 
 @char: haru, surprised, bounce
+@voice haru
 陽春: えっ、えっ、ほんとに？
 
 瑞穂: ほんとに
@@ -63,6 +66,7 @@ id: end-kyuudou
 それから、ぱあっと顔が明るくなった。
 
 @char: haru, happy, bounce
+@voice haru
 陽春: やった——！
 
 立ち上がった拍子に、椅子がガタンと鳴った。
@@ -70,6 +74,7 @@ id: end-kyuudou
 前の席の子が振り返る。
 
 @char: haru, perori
+@voice haru
 陽春: あ、ごめん
 
 ぺこっと頭を下げて、それからまた私のほうを向いた。
@@ -77,11 +82,13 @@ id: end-kyuudou
 今度は声を抑えて、でも興奮は隠しきれていない。
 
 @char: haru, happy
+@voice haru
 陽春: 向いてないって言ってたのに
 
 瑞穂: 言ってた
 
 @char: haru, normal_open
+@voice haru
 陽春: なんで？
 
 瑞穂: ……陽春が、一緒だと楽しいって言ったから
@@ -92,10 +99,12 @@ id: end-kyuudou
 陽春は一瞬きょとんとして、それから、今までで一番やわらかく笑った。
 
 @char: haru, happy
+@voice haru
 陽春: ……そっか
 
 瑞穂: うん
 
+@voice haru
 陽春: うん。楽しいよ。絶対
 
 # ====== 放課後・弓道場 ======
@@ -108,11 +117,13 @@ id: end-kyuudou
 道着を借りて、初めて射位に立った。
 
 @char: haru, normal_open
+@voice haru
 陽春: 肩、力入れすぎ。もっと抜いて
 
 瑞穂: ……難しい
 
 @char: haru, happy
+@voice haru
 陽春: 最初はみんなそう
 
 @char: yashima, normal
@@ -121,16 +132,20 @@ id: end-kyuudou
 @char: yashima, smile
 淡々とした目で、でも口元は少しゆるんでいる。
 
+@voice yashima
 八島: 橘、人に教えるの下手だな
 
 @char: haru, pout
+@voice haru
 陽春: ええっ、そんなことないし！
 
 @char: yashima, normal
+@voice yashima
 八島: 藤波さん、肩じゃなくて、背中で引く感じ
 
 瑞穂: ……背中
 
+@voice yashima
 八島: そう
 
 言われた通りにすると、少しだけ楽になった。
@@ -138,6 +153,7 @@ id: end-kyuudou
 弦を引いて、的を見る。
 
 @char: haru, happy
+@voice haru
 陽春: いける、いける
 
 @se: bowstring
@@ -146,17 +162,21 @@ id: end-kyuudou
 矢は、的のずっと手前に落ちた。
 
 @char: haru, trouble
+@voice haru
 陽春: ……うん。まあ、最初だし
 
 瑞穂: 全然だめだった
 
 @char: haru, normal
+@voice haru
 陽春: 私も最初そうだったよ。ほんとに
 
 @char: yashima, smile
+@voice yashima
 八島: 橘は今もそうだろ
 
 @char: haru, pout
+@voice haru
 陽春: 先輩！
 
 笑い声が、道場に響いた。
@@ -166,10 +186,12 @@ id: end-kyuudou
 矢を拾いに行きながら、陽春が横に並んだ。
 
 @char: haru, happy
+@voice haru
 陽春: 来てくれて、嬉しい
 
 瑞穂: うん
 
+@voice haru
 陽春: ずっと、一緒にやりたかったんだ
 
 夕方の光が、道場の床を斜めに照らしていた。
@@ -183,11 +205,13 @@ id: end-kyuudou
 それだけで、選んでよかったと思えた。
 
 @char: haru, normal
+@voice haru
 陽春: 明日も来るよね？
 
 瑞穂: 来る
 
 @char: haru, happy, bounce
+@voice haru
 陽春: やった
 
 @bgmFadeOut: 3000

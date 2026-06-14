@@ -64,6 +64,7 @@ const scenario: ScenarioFile = {
     {
       text: '……藤波さん。落とし物ですか',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-1.wav',
     },
     {
       text: 'いえ',
@@ -84,6 +85,7 @@ const scenario: ScenarioFile = {
     {
       text: '……これ',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-2.wav',
       commands: [
         {
           type: 'char',
@@ -102,6 +104,7 @@ const scenario: ScenarioFile = {
     {
       text: '……ここ、何もないですよ。大会もないし、活躍もできない',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-3.wav',
       commands: [
         {
           type: 'char',
@@ -117,6 +120,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ただ、落とし物を待つだけです',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-4.wav',
     },
     {
       text: 'はい',
@@ -125,6 +129,7 @@ const scenario: ScenarioFile = {
     {
       text: '……それでも？',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-5.wav',
     },
     {
       text: 'それがいいんです',
@@ -139,6 +144,7 @@ const scenario: ScenarioFile = {
     {
       text: '……ひとつ、訊いていいですか',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-6.wav',
       commands: [
         {
           type: 'char',
@@ -154,6 +160,7 @@ const scenario: ScenarioFile = {
     {
       text: 'これは、ちゃんと、あなたのものですか',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-7.wav',
     },
     {
       text: '',
@@ -168,6 +175,7 @@ const scenario: ScenarioFile = {
     {
       text: '入部の手続き、台帳に書きますね',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-8.wav',
       commands: [
         {
           type: 'char',
@@ -183,6 +191,7 @@ const scenario: ScenarioFile = {
     {
       text: 'ルールなので',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-9.wav',
     },
     {
       text: 'そう言った先輩の口元が、ほんの少しだけ、ほぐれていた。',
@@ -206,6 +215,7 @@ const scenario: ScenarioFile = {
     {
       text: '……これで、二人ですね',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-10.wav',
       commands: [
         {
           type: 'char',
@@ -230,6 +240,7 @@ const scenario: ScenarioFile = {
     {
       text: 'よろしくお願いします。藤波さん',
       speaker: '青葉',
+      voice: '/assets/audio/voice/aoba/end-hokanbu-11.wav',
       commands: [
         {
           type: 'char',
