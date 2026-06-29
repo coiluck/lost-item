@@ -1,7 +1,6 @@
 // ts/pages/LogoPage.tsx
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { voice } from "../audio/audio";
 import "../../css/pages/LogoPage.css";
 
 function LogoPage() {
@@ -27,7 +26,6 @@ function LogoPage() {
   useEffect(() => {
     const startTimer = setTimeout(() => {
       setShowText(true);
-      void voice.play(voicePath);
 
       const totalAnimationTimeSec =
         (textTop.length * animationDelay + 0.2) +

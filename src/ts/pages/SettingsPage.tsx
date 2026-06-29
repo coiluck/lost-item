@@ -1,7 +1,7 @@
 // ts/pages/Settings.tsx
 import { useRef } from "react";
 import { useSettingsStore } from "../stores/settingsStore";
-import { bgm, se, voice } from '../audio/audio';
+import { bgm, se } from '../audio/audio';
 import { setMasterGain } from '../audio/audioContext';
 import "../../css/pages/SettingsPage.css";
 
@@ -12,8 +12,6 @@ export default function SettingsPage() {
   const setBgmVolume = useSettingsStore(state => state.setBgmVolume);
   const seVolume = useSettingsStore(state => state.seVolume);
   const setSeVolume = useSettingsStore(state => state.setSeVolume);
-  const cvVolume = useSettingsStore(state => state.cvVolume);
-  const setCvVolume = useSettingsStore(state => state.setCvVolume);
   const textSpeed = useSettingsStore(state => state.textSpeed);
   const setTextSpeed = useSettingsStore(state => state.setTextSpeed);
   const textSize = useSettingsStore(state => state.textSize);
@@ -37,11 +35,6 @@ export default function SettingsPage() {
   const handleSeVolumeChange = (volume: number) => {
     setSeVolume(volume);
     se.setVolume(volume);
-  };
-
-  const handleCvVolumeChange = (volume: number) => {
-    setCvVolume(volume);
-    voice.setVolume(volume);
   };
 
   const handleTextSpeedChange = async (speed: number) => {
@@ -121,20 +114,6 @@ export default function SettingsPage() {
               onChange={e => handleSeVolumeChange(parseInt(e.target.value))}
             />
             <span className="setting-item-value-range-text">{seVolume}</span>
-          </div>
-        </div>
-        <div className="setting-item">
-          <div className="setting-item-label-container">
-            <span className="setting-item-label-ja">ボイス音量</span>
-            <span className="setting-item-label-en">Character Voice</span>
-          </div>
-          <div className="setting-item-value-range-container">
-            <input
-              type="range" min="0" max="10" step="1"
-              defaultValue={cvVolume}
-              onChange={e => handleCvVolumeChange(parseInt(e.target.value))}
-            />
-            <span className="setting-item-value-range-text">{cvVolume}</span>
           </div>
         </div>
       </section>

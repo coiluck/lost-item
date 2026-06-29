@@ -72,7 +72,7 @@ export function useGameEngine(initial: GameState) {
     const result = engine.advance();
     if (result.kind === 'line') {
       syncFromState();
-      syncVoice();
+      // syncVoice();
       // @char に bounce フラグが付いた立ち絵をはねさせる（話している演出）。
       for (const cmd of result.line.commands ?? []) {
         if (cmd.type === 'char' && cmd.bounce) fireBounce(cmd.id);
